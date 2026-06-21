@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuerpo Docente - Instituto Oficial Polivalente José Trinidad Cabañas</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f7fafc;
+            color: #2d3748;
+        }
+
+        /* BARRA SUPERIOR */
+        .custom-header {
+            background-color: #1a365d;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .menu-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .boton-desplegable {
+            background: #2b6cb0;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .boton-desplegable:hover {
+            background: #23527c;
+        }
+
+        .texto-institucional {
+            color: white;
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+        }
+
+        /* MENÚ DESPLEGABLE */
+        .menu-desplegable {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 40px;
+            background: white;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.15);
+            border-radius: 0 0 8px 8px;
+            flex-direction: column;
+            width: 260px;
+            overflow: hidden;
+        }
+
+        .menu-desplegable a {
+            color: #2d3748;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #edf2f7;
+            transition: all 0.3s;
+        }
+
+        .menu-desplegable a:hover {
+            background: #f7fafc;
+            color: #2b6cb0;
+            padding-left: 25px;
+        }
+
+       .logo-grande {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  background: transparent;
+
+        }
+
+        /* CONTENEDOR DE TARJETAS */
+        .mosaico-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* TARJETAS SEPARADAS INDIVIDUALES */
+        .mosaico-item {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: row;
+            min-height: 180px;
+            
+            margin-bottom: 35px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .mosaico-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Contenedor de Imagen */
+        .imagen-tarjeta {
+            width: 32%;
+            min-width: 260px;
+            background: #e2e8f0;
+        }
+
+        .imagen-tarjeta img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Contenedor de Contenido */
+        .contenido-tarjeta {
+            width: 68%;
+            padding: 35px;
+            text-align: justify;
+            display: flex;
+            align-items: center;
+        }
+
+        .contenido-tarjeta.sin-imagen {
+            width: 100%;
+        }
+
+        .badge-horario {
+            display: inline-block;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .contenido-tarjeta h3 {
+            color: #1a365d;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .contenido-tarjeta p {
+            color: #4a5568;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .lista-profes {
+            font-weight: 600;
+            color: #2b6cb0;
+            line-height: 1.8;
+        }
+
+        /* RESPONSIVO PARA MÓVILES */
+        @media (max-width: 768px) {
+            .mosaico-item {
+                flex-direction: column;
+            }
+            .imagen-tarjeta {
+                width: 100%;
+                height: 250px;
+            }
+            .contenido-tarjeta {
+                width: 100%;
+                padding: 25px;
+            }
+            .custom-header {
+                padding: 15px 20px;
+            }
+            .menu-desplegable {
+                left: 20px;
+                width: calc(100% - 40px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="custom-header">
+        <div class="menu-container">
+            <button class="boton-desplegable" id="btnMenu" aria-label="Abrir menú">☰</button>
+            <span class="texto-institucional">MENÚ INSTITUCIONAL</span>
+            
+            <nav class="menu-desplegable" id="menuContenido">
+                <a href="menuscar.html">Inicio</a>
+                <a href="quienes_somos.html">Quiénes Somos</a>
+                <a href="personal_administrativo.html">Personal Administrativo</a>
+                <a href="docentes.html">Docentes</a>
+                <a href="CatalogoCarreras.html">Carreras</a>
+                <a href="Areas.html">Áreas</a>
+                <a href="Jornadas.html">Jornadas</a>
+            </nav>
+        </div>
+
+        <div class="logo-container">
+            <img src="C:\Users\valer\Pictures\tyu.jpg" alt="Logo Instituto" class="logo-grande">
+        </div>
+    </header>
+
+    <main class="mosaico-container">
+        
+        <div style="text-align: center; margin-bottom: 50px; margin-top: 20px;">
+            <h2 style="color: #1a365d; font-size: 2.4rem; margin-bottom: 12px;">Nuestro Cuerpo Docente</h2>
+            <p style="color: #4a5568; max-width: 800px; margin: 0 auto; font-size: 1.15rem; line-height: 1.7;">
+                Nómina oficial del personal docente del instituto, organizado por áreas del conocimiento y campos de especialización técnica.
+            </p>
+        </div>
+
+        <div class="mosaico-item" style="border-top: 6px solid #2b6cb0;">
+            <div class="imagen-tarjeta">
+                <img src="C:\Users\valer\Pictures\titer.jpg" alt="Prof. Daniel Moncada">
+            </div>
+            <div class="contenido-tarjeta">
+                <div>
+                    <span class="badge-horario" style="background-color: #1a365d;">Informática y Asesor de TES</span>
+                    <h3>Daniel Moncada</h3>
+                    <p>Docente del área de Informática con amplia trayectoria en la formación tecnológica institucional. Está a cargo del desarrollo de los módulos de Desarrollo Web, Redes y Comunicaciones, y Mantenimiento de Sistemas. Asimismo, ejerce la función de Asesor del Trabajo Educativo Social (TES) en el área de informática, supervisando los proyectos de vinculación técnica de los estudiantes.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mosaico-item" style="border-top: 6px solid #2b6cb0;">
+            <div class="imagen-tarjeta">
+                <img src="C:\Users\valer\Pictures\fifu.jpg" alt="Profra. Fiama Euceda">
+            </div>
+            <div class="contenido-tarjeta">
+                <div>
+                    <span class="badge-horario" style="background-color: #2b6cb0;">Educación Cívica, Legislación y Asesora de TES</span>
+                    <h3>Fiama Euceda</h3>
+                    <p>Catedrática responsable de las asignaturas de Educación Cívica y Legislación Aplicada. Se desempeña como Asesora General del Trabajo Educativo Social (TES) para las especialidades de Humanidades y Electricidad, coordinando la planificación, vinculación y ejecución de las actividades comunitarias obligatorias de los estudiantes de último año.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mosaico-item" style="border-top: 6px solid #2b6cb0;">
+            <div class="imagen-tarjeta">
+                <img src="C:\Users\valer\Pictures\lpe.jpg" alt="Prof. Yolin Obed Martinez">
+            </div>
+            <div class="contenido-tarjeta">
+                <div>
+                    <span class="badge-horario" style="background-color: #1a365d;">Informática y Artes Visuales</span>
+                    <h3>Yolin Obed Martinez</h3>
+                    <p>Docente especialista en el área informática, responsable de impartir las asignaturas de Programación y Producciones Digitales. Su perfil profesional integra la enseñanza de competencias técnicas en desarrollo de software con la práctica de la Fotografía Profesional, participando activamente en la documentación visual y actividades institucionales.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mosaico-item" style="border-top: 6px solid #2b6cb0;">
+            <div class="contenido-tarjeta sin-imagen">
+                <div>
+                    <span class="badge-horario" style="background-color: #2b6cb0;">Área de Letras</span>
+                    <h3>Español</h3>
+                    <p>Docentes responsables de las cátedras de lenguaje, redacción técnica y literatura:</p>
+                    <p class="lista-profes" style="margin-top: 10px;">• Marithza Hernandez <br>• Marithza Alvarado</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mosaico-item" style="border-top: 6px solid #2b6cb0;">
+            <div class="contenido-tarjeta sin-imagen">
+                <div>
+                    <span class="badge-horario" style="background-color: #1a365d;">Área de Ciencias Exactas</span>
+                    <h3>Matemáticas</h3>
+                    <p>Personal docente encargado del desarrollo del razonamiento lógico-matemático y cálculo:</p>
+                    <p class="lista-profes" style="margin-top: 10px;">• Ronal Munguia <br>• Donaldo Gonzales <br>• Yadira Reyes</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mosaico-item" style="border-top: 6px solid #2b6cb0;">
+            <div class="contenido-tarjeta sin-imagen">
+                <div>
+                    <span class="badge-horario" style="background-color: #2b6cb0;">Área de Ciencias de la Naturaleza</span>
+                    <h3>Ciencias Naturales</h3>
+                    <p>Cátedra orientada al estudio del método científico experimental y el entorno biológico:</p>
+                    <p class="lista-profes" style="margin-top: 10px;">• Erika Lopez 
+                        <br>• Alba Trochez </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mosaico-item" style="border-top: 6px solid #2b6cb0;">
+            <div class="contenido-tarjeta sin-imagen">
+                <div>
+                    <span class="badge-horario" style="background-color: #1a365d;">Área Social y Cívica</span>
+                    <h3>Ciencias Sociales y Educación Cívica</h3>
+                    <p>Docentes a cargo del desarrollo de competencias ciudadanas, análisis social e historia:</p>
+                    <p class="lista-profes" style="margin-top: 10px;">
+                        • Armando Montoya <span style="color:#4a5568; font-weight:normal;">(Ciencias Sociales y Educación Cívica)</span><br>
+                        • Fiama Euceda <span style="color:#4a5568; font-weight:normal;">(Educación Cívica)</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mosaico-item" style="border-top: 6px solid #2b6cb0;">
+            <div class="contenido-tarjeta sin-imagen">
+                <div>
+                    <span class="badge-horario" style="background-color: #2b6cb0;">Área de Desarrollo Humano</span>
+                    <h3>Educación Artística y Educación Física</h3>
+                    <p>Encargados de las áreas de expresión estética, psicomotricidad y salud física:</p>
+                    <p class="lista-profes" style="margin-top: 10px;">
+                        • Maria Chacon <span style="color:#4a5568; font-weight:normal;">(Educación Artística)</span><br>
+                        • Riseldy Larios <span style="color:#4a5568; font-weight:normal;">(Educación Artística y Educación Física)</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mosaico-item" style="border-top: 6px solid #2b6cb0;">
+            <div class="contenido-tarjeta sin-imagen">
+                <div>
+                    <span class="badge-horario" style="background-color: #1a365d;">Área de Idiomas</span>
+                    <h3>Inglés</h3>
+                    <p>Personal docente encargado del desarrollo de competencias lingüísticas en lenguas extranjeras:</p>
+                    <p class="lista-profes" style="margin-top: 10px;">• Jose Andres Soto</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mosaico-item" style="border-top: 6px solid #2b6cb0;">
+            <div class="contenido-tarjeta sin-imagen">
+                <div>
+                    <span class="badge-horario" style="background-color: #2b6cb0;">Área de Ciencias Avanzadas</span>
+                    <h3>Biología, Química y Física Elemental</h3>
+                    <p>Instrucción especializada en el análisis y leyes físicas y químicas fundamentales:</p>
+                    <p class="lista-profes" style="margin-top: 10px;">• Elvin Vasquez  <br>• Alba Trochez</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mosaico-item" style="border-top: 6px solid #2b6cb0;">
+            <div class="contenido-tarjeta sin-imagen">
+                <div>
+                    <span class="badge-horario" style="background-color: #1a365d;">Área de Identidad Nacional</span>
+                    <h3>Sociología e Historia de Honduras</h3>
+                    <p>Análisis estructurado del desarrollo social e histórico del país:</p>
+                    <p class="lista-profes" style="margin-top: 10px;">• Edith Ramos</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mosaico-item" style="border-top: 6px solid #2b6cb0;">
+            <div class="contenido-tarjeta sin-imagen">
+                <div>
+                    <span class="badge-horario" style="background-color: #2b6cb0;">Área Técnica Especializada</span>
+                    <h3>Electricidad e Instalación Eléctrica</h3>
+                    <p>Taller técnico enfocado en el diseño, montaje y mantenimiento de redes y tableros eléctricos residenciales e industriales:</p>
+                    <p class="lista-profes" style="margin-top: 10px;">• Edy Pastor</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mosaico-item" style="border-top: 6px solid #2b6cb0;">
+            <div class="contenido-tarjeta sin-imagen">
+                <div>
+                    <span class="badge-horario" style="background-color: #1a365d;">Área Técnica Especializada</span>
+                    <h3>Electrotecnia</h3>
+                    <p>Cátedra teórica y práctica sobre las leyes de la electricidad, circuitos y mediciones de precisión:</p>
+                    <p class="lista-profes" style="margin-top: 10px;">• Claudia</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mosaico-item" style="border-top: 6px solid #2b6cb0;">
+            <div class="contenido-tarjeta sin-imagen">
+                <div>
+                    <span class="badge-horario" style="background-color: #2b6cb0;">Área Comercial y Financiera</span>
+                    <h3>Contabilidad</h3>
+                    <p>Asignatura orientada al control financiero, balances y principios de contabilidad general:</p>
+                    <p class="lista-profes" style="margin-top: 10px;">• German</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mosaico-item" style="border-top: 6px solid #2b6cb0;">
+            <div class="contenido-tarjeta sin-imagen">
+                <div>
+                    <span class="badge-horario" style="background-color: #1a365d;">Área de Administración y Negocios</span>
+                    <h3>Gestión Empresarial</h3>
+                    <p>Cátedra centrada en el desarrollo de planes de negocio, emprendimiento y administración eficiente:</p>
+                    <p class="lista-profes" style="margin-top: 10px;">• Maria Chacon</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mosaico-item" style="border-top: 6px solid #2b6cb0;">
+            <div class="contenido-tarjeta sin-imagen">
+                <div>
+                    <span class="badge-horario" style="background-color: #2b6cb0;">Área Técnica Especializada</span>
+                    <h3>Reparaciones Eléctricas</h3>
+                    <p>Módulo de especialización enfocado en el diagnóstico de fallas, bobinado de motores y reparación de maquinaria industrial:</p>
+                    <p class="lista-profes" style="margin-top: 10px;">• Elvin Vasquez</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const btnMenu = document.getElementById('btnMenu');
+            const menuContenido = document.getElementById('menuContenido');
+
+            if (btnMenu && menuContenido) {
+                btnMenu.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const displayActual = window.getComputedStyle(menuContenido).display;
+                    if (displayActual === 'none') {
+                        menuContenido.style.display = 'flex';
+                    } else {
+                        menuContenido.style.display = 'none';
+                    }
+                });
+
+                document.addEventListener('click', function() {
+                    menuContenido.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

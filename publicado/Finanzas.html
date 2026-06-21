@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contaduría y Finanzas - Instituto José Trinidad Cabañas</title>
+    <link rel="stylesheet" href="Menu.css">
+    <style>
+        /* Contenedor Principal Adaptado a tu Estilo Original */
+        .detalle-carrera-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 25px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+
+        /* Hero Banner Financiero Corporativo */
+        .header-carrera {
+            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(26, 54, 93, 0.15);
+            color: white;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .header-carrera h1 {
+            font-size: 3rem;
+            margin: 0 0 10px 0;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .header-carrera p {
+            color: #cbd5e1;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 0;
+        }
+
+        /* Títulos de Bloques */
+        .titulo-seccion {
+            color: #1a365d;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 40px 0 20px 0;
+            padding-left: 15px;
+            border-left: 5px solid #1a365d;
+        }
+
+        /* ==========================================
+           MOSAICO DE CUADROS (GRID)
+           ========================================== */
+        .mosaico-moderno {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 992px) {
+            .mosaico-moderno { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .mosaico-moderno { grid-template-columns: 1fr; }
+        }
+
+        /* Cuadros de asignaturas y datos (Sin Efecto Hover) */
+        .mosaico-item {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .mosaico-item.ancho { grid-column: span 2; }
+        @media (max-width: 600px) { .mosaico-item.ancho { grid-column: span 1; } }
+
+        /* Cuadros destinados a ser IMÁGENES completas */
+        .mosaico-item.tarjeta-imagen {
+            padding: 0;
+            position: relative;
+            min-height: 260px;
+            background: #edf2f7;
+        }
+
+        .mosaico-item.tarjeta-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+        }
+
+        .overlay-imagen {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(26, 54, 93, 0.9));
+            padding: 20px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .mosaico-item h3 {
+            color: #1a365d;
+            font-size: 1.35rem;
+            margin: 0 0 12px 0;
+            font-weight: 700;
+        }
+
+        .mosaico-item p {
+            color: #4a5568;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0 0 10px 0;
+        }
+
+        /* Detalles técnicos de herramientas y recursos */
+        .detalles-tecnicos {
+            font-size: 0.9rem;
+            color: #4a5568;
+            margin-top: 5px;
+            background: #f7fafc;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border-left: 3px solid #cbd5e1;
+        }
+
+        .badge-horas {
+            align-self: flex-start;
+            background: #edf2f7;
+            color: #1a365d;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        /* Lista de asignaturas generales */
+        .contenedor-generales {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .badge-general {
+            background: #f7fafc;
+            color: #4a5568;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Estilo de la lista de capacidades */
+        .lista-salsa {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .lista-salsa li {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .lista-salsa li::before {
+            content: "📈";
+            color: #1a365d;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="custom-header">
+        <div class="menu-container">
+            <button class="boton-desplegable" id="btnMenu" aria-label="Abrir menú">☰</button>
+            <span class="texto-institucional">MENÚ INSTITUCIONAL</span>
+            
+            <nav class="menu-desplegable" id="menuContenido">
+               <a href="menuscar.html">Inicio</a>
+                <a href="Quines Somos.html">Quienes Somos</a>
+                <a href="CatalogoCarreras.html">Carreras</a>
+                <a href="Areas.html">Areas</a>
+                <a href="Jornadas.html">Jornadas</a>
+                 <a href="Personal administrativo.html">Personal administrativo</a>
+                   <a href="docentes.html">Docentes</a>
+            </nav>
+        </div>
+
+        <div class="logo-container">
+            <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 7.10.33 PM.jpeg" alt="Logo Instituto" class="logo-grande">
+        </div>
+    </header>
+
+    <main class="detalle-carrera-container">
+     
+
+        <div class="header-carrera">
+            <p>Bachillerato Técnico Profesional En</p>
+            <h1>Contaduría y Finanzas</h1>
+        </div>
+
+        <h2 class="titulo-seccion"> El Lenguaje de los Negocios y la Estrategia Monetaria</h2>
+        <div class="mosaico-moderno">
+            
+            <div class="mosaico-item ancho" style="background: linear-gradient(to right, #ffffff, #f7fafc);">
+                <h3>Importancia Ejecutiva y Enfoque Profesional</h3>
+                <p>En el Instituto José Trinidad Cabañas preparamos a los futuros líderes del sector financiero y contable del país. Ninguna organización, corporación o emprendimiento puede sobrevivir sin un control estratégico de sus recursos económicos. Esta carrera dota al estudiante de un criterio analítico implacable, capacitándolo para dirigir auditorías, optimizar carteras fiscales, evaluar la economía global y tomar decisiones financieras clave que multiplican el valor de las organizaciones.</p>
+            </div>
+
+            <div class="mosaico-item">
+                <h3>Competencias Gerenciales Clave:</h3>
+                <ul class="lista-salsa">
+                    <li>Auditoría e interpretación de balances.</li>
+                    <li>Cálculos actuariales e intereses financieros.</li>
+                    <li>Planificación e inteligencia de presupuestos.</li>
+                    <li>Gestión y estructuración impositiva tributaria.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <h2 class="titulo-seccion"> Pilares Financieros y Mercantiles — Undécimo Grado</h2>
+        
+        <div class="mosaico-moderno">
+            
+            <div class="mosaico-item ancho">
+                <h3>Cimientos Técnicos Contables</h3>
+                <p>El primer año establece la estructura matemática, jurídica y administrativa elemental. Los alumnos aprenden el ciclo contable básico desde la jornalización clásica hasta la estructuración de informes financieros, combinando herramientas analíticas con el marco legislativo actual.</p>
+            </div>
+
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 6.49.31 PM.jpeg" alt="Libros contables y calculadora de oficina">
+                <div class="overlay-imagen">Análisis de Balances y Auditoría de Cuentas</div>
+            </div>
+
+            <div class="mosaico-item">
+                <span class="badge-horas">9 Horas Semanales</span>
+                <h3>Contabilidad I</h3>
+                <p>Dominio técnico absoluto de la partida doble. Clasificación, registro y control milimétrico de Activos, Pasivos y Capital, junto con el cálculo preciso del Impuesto Sobre Ventas (ISV) y retenciones corporativas.</p>
+                <div class="detalles-tecnicos">
+                    <strong> Recursos:</strong> Libros de inventario, balances de saldos, estados de resultados, calculadora comercial.
+                </div>
+            </div>
+
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 6.55.37 PM (3).jpeg" alt="Persona analizando gráficas en una laptop">
+                <div class="overlay-imagen">Estrategia Gerencial y Modelos de Negocio</div>
+            </div>
+
+            <div class="mosaico-item">
+                <span class="badge-horas">4 Horas Semanales</span>
+                <h3>Matemáticas Financieras</h3>
+                <p>Cálculo analítico neto aplicado al valor del dinero en el tiempo. Dominio completo de ejercicios prácticos de interés simple, interés compuesto, capitalizaciones periódicas, tasas de descuento y anualidades.</p>
+                <div class="detalles-tecnicos">
+                    <strong> Herramientas:</strong> Calculadoras financieras, fórmulas de progresión, MS Excel financiero.
+                </div>
+            </div>
+
+            <div class="mosaico-item">
+                <span class="badge-horas">3 Horas Semanales</span>
+                <h3>Administración General</h3>
+                <p>Estudio evolutivo e histórico del pensamiento administrativo. Comprensión integral del proceso administrativo (Planeación, Organización, Dirección y Control) aplicado a la gerencia de empresas modernas.</p>
+            </div>
+
+            <div class="mosaico-item">
+                <span class="badge-horas">3 Horas Semanales</span>
+                <h3>Legislación Mercantil</h3>
+                <p>Análisis del marco jurídico que regula los actos de comercio. Estudio profundo del Código de Comercio, requisitos legales de constitución de sociedades comerciales y llenado oficial de documentación de crédito (Letras de cambio, pagarés, cheques).</p>
+            </div>
+
+            <div class="mosaico-item">
+                <span class="badge-horas">3 Horas Semanales</span>
+                <h3>Gestión Empresarial</h3>
+                <p>Taller directo de incubación de negocios. Formulación, diseño estratégico, evaluación de presupuestos y desarrollo completo de proyectos de emprendimiento comercial viables.</p>
+            </div>
+
+            <!-- TRONCO CIENTÍFICO (OCUPA 2 COLUMNAS) -->
+            <div class="mosaico-item ancho" style="border-left: 5px solid #1a365d;">
+                <h3>Tronco Científico y Clases Generales</h3>
+                <p>Asignaturas transversales fundamentales que complementan tu horario académico formal de undécimo grado, fortaleciendo tus habilidades analíticas, lingüísticas y críticas:</p>
+                <div class="contenedor-generales">
+                    <span class="badge-general" style="border-color: #1a365d; background: #f7fafc; color: #1a365d;">🇺🇸 Inglés Técnico (2 Horas)</span>
+                    <span class="badge-general"> Español (4 Horas)</span>
+                    <span class="badge-general"> Filosofía (3 Horas)</span>
+                    <span class="badge-general"> Economía (3 Horas)</span>
+                    <span class="badge-general"> Apreciación Artística (1 Hora)</span>
+                    <span class="badge-general">Física Aplicada</span>
+                    <span class="badge-general">Legislación Informática</span>
+                </div>
+            </div>
+
+            <!-- IMAGEN A LA PAR (OCUPA LA 1 COLUMNA RESTANTE DE LA FILA) -->
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-03 at 2.22.03 PM (1).jpeg" alt="Creación de Empresas">
+                <div class="overlay-imagen">Creación de Empresas</div>
+            </div>
+
+        </div> <!-- CIERRE CORRECTO DEL MOSAICO DE UNDÉCIMO GRADO -->
+
+        </div>
+        <h2 class="titulo-seccion"> Especialización Senior Avanzada — Duodécimo Grado</h2>
+        
+        <div class="mosaico-moderno">
+            
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 6.49.19 PM (4).jpeg" alt="Bóveda bancaria o sistema financiero electrónico">
+                <div class="overlay-imagen">Operaciones del Sistema Bancario Nacional</div>
+            </div>
+
+            <div class="mosaico-item ancho" style="background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%); color: white;">
+                <h3 style="color: #cbd5e1;">Inmersión de Alta Especialización Fiscal</h3>
+                <p style="color: #cbd5e1;">En el último año de la carrera, las materias genéricas desaparecen por completo. El plan de estudios se transforma en un entrenamiento riguroso de nivel gerencial superior, donde el estudiante domina las diferentes ramas contables complejas requeridas por firmas auditoras mundiales y el sistema bancario.</p>
+            </div>
+
+            <div class="mosaico-item">
+                <span class="badge-horas">Senior Track</span>
+                <h3>Contabilidad Financiera</h3>
+                <p>Análisis crítico de estados financieros consolidados bajo Normas Internacionales de Información Financiera (NIIF/NIC). Auditoría avanzada de flujos de efectivo e inversiones complejas.</p>
+            </div>
+
+            <div class="mosaico-item">
+                <span class="badge-horas">Senior Track</span>
+                <h3>Contabilidad Bancaria</h3>
+                <p>Estructuración contable especializada para instituciones financieras, encajes legales, depósitos, créditos corporativos y regulaciones de la comisión de banca y seguros.</p>
+            </div>
+
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 6.55.37 PM (2).jpeg" alt="Fábrica u optimización de costos de producción">
+                <div class="overlay-imagen">Cálculo de Costos y Logística de Manufactura</div>
+            </div>
+
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 6.49.19 PM (6).jpeg" alt="Revisión de gráficos de auditoría corporativa">
+                <div class="overlay-imagen">Cierre Fiscal y Análisis de Rentabilidad</div>
+            </div>
+
+            <div class="mosaico-item">
+                <span class="badge-horas">Senior Track</span>
+                <h3>Contabilidad de Costos</h3>
+                <p>Ingeniería financiera para la manufactura. Determinación del costo real de producción mediante control exacto de materia prima directa, mano de obra y costos indirectos de fabricación (CIF).</p>
+            </div>
+
+            <div class="mosaico-item">
+                <span class="badge-horas">Senior Track</span>
+                <h3>Contabilidad II Avanzada</h3>
+                <p>Control interno exhaustivo de cajas chicas, conciliaciones bancarias complejas, valuación de inventarios por diversos métodos (PEPS, Promedio) y planes de depreciación de activos fijos corporativos.</p>
+            </div>
+
+        </div>
+
+        <h2 class="titulo-seccion"> Infraestructura Ejecutiva e Identidad Gremial</h2>
+        <div class="mosaico-moderno">
+            
+            <div class="mosaico-item">
+                <h3> Laboratorios de Simulación Empresarial</h3>
+                <p>Nuestra formación técnica trasciende el papel. Los alumnos se capacitan directamente en laboratorios tecnológicos utilizando hojas de cálculo matriciales y software contable, emulando la rutina diaria de un departamento de finanzas real.</p>
+            </div>
+
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 6.55.37 PM.jpeg" alt="Estudiantes en simulación de negocios">
+                <div class="overlay-imagen">Prácticas Con Sistemas y Software Contable</div>
+            </div>
+
+            <div class="mosaico-item">
+                <h3> Docentes y Auditores Activos</h3>
+                <p>La carrera es impartida por profesionales de las ciencias económicas con amplia trayectoria en el sector bancario, mercantil y tributario del país, garantizando una transferencia de conocimientos actualizada y verídica.</p>
+            </div>
+
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 6.55.37 PM (1).jpeg" alt="Feria de emprendimiento empresarial">
+                <div class="overlay-imagen">Feria de Negocios: Innovation Comercial Real</div>
+            </div>
+
+            <div class="mosaico-item ancho" style="background: #f8fafc;">
+                <h3> Evento Cumbre: Feria de Emprendimiento e Innovación Financiera</h3>
+                <p>La identidad de la carrera destaca anualmente en la Gran Feria de Emprendimiento. Un magno evento donde los estudiantes defienden planes de negocios reales ante ternas evaluadoras del sector privado, demostrando la viabilidad de sus proyectos, presupuestos financieros, estudios de mercado y proyecciones de rentabilidad que enamoran a cualquier inversionista.</p>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const btnMenu = document.getElementById('btnMenu');
+            const menuContenido = document.getElementById('menuContenido');
+
+            if (btnMenu && menuContenido) {
+                btnMenu.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const displayActual = window.getComputedStyle(menuContenido).display;
+                    if (displayActual === 'none') {
+                        menuContenido.style.display = 'flex';
+                    } else {
+                        menuContenido.style.display = 'none';
+                    }
+                });
+
+                document.addEventListener('click', function() {
+                    menuContenido.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

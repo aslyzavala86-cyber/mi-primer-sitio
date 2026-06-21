@@ -1,0 +1,315 @@
+/* ==========================================================================
+   1. RESET Y ESTILOS GENERALES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #333333;
+    line-height: 1.6;
+}
+
+html {
+    scroll-behavior: smooth; /* Hace que la página baje con un deslizamiento suave */
+}
+
+/* ==========================================================================
+   2. ENCABEZADO (HEADER) - ¡ACTUALIZADO A AZUL INSTITUCIONAL!
+   ========================================================================== */
+.custom-header {
+    display: flex;
+    justify-content: space-between; /* Menú a la izquierda, Logo gigante a la derecha */
+    align-items: center;
+    background-color: #1a365d; /* 🇨🇳 Azul oscuro institucional aplicado */
+    padding: 25px 50px; /* Más espacio interno para alojar el logo gigante */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 100;
+}
+
+/* LADO IZQUIERDO: Menú Institucional (Súper Ancho) */
+.menu-container {
+    display: flex;
+    align-items: center;
+    gap: 25px; 
+    min-width: 380px; /* Forzamos un ancho imponente para el texto institucional */
+}
+
+.texto-institucional {
+    font-size: 1.7rem; /* Letra bien grande y legible */
+    font-weight: 800;  /* Mayor grosor institucional */
+    color: #ffffff;    /* Cambiado a blanco para contrastar con el fondo azul */
+    letter-spacing: 0.5px;
+}
+
+/* Botón Desplegable (Hamburguesa) */
+.boton-desplegable {
+    background: none;
+    border: none;
+    font-size: 2.8rem; /* Icono más grande y fácil de presionar */
+    color: #ffffff;    /* Cambiado a blanco para que resalte */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.boton-desplegable:hover {
+    transform: scale(1.1);
+    color: #2b6cb0;    /* Destello azul claro al pasar el mouse */
+}
+
+/* ==========================================================================
+   3. MENÚ DESPLEGABLE (Alineado a la izquierda)
+   ========================================================================== */
+.menu-desplegable {
+    position: absolute;
+    top: 100%;
+    left: 50px; 
+    background-color: #ffffff;
+    min-width: 300px; 
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    padding: 12px 0;
+    display: none;
+    flex-direction: column;
+}
+
+.menu-desplegable.activo {
+    display: flex;
+}
+
+.menu-desplegable a {
+    padding: 16px 24px;
+    text-decoration: none;
+    color: #333333;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.menu-desplegable a:hover {
+    background-color: #f0f4f8;
+    color: #0066cc;
+
+
+}
+
+/* ==========================================================================
+   4. SECCIÓN MISIÓN Y VISIÓN (PÁGINA PRINCIPAL)
+   ========================================================================== */
+.seccion-info {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 45px; 
+}
+
+.tarjeta-info {
+    background-color: #fffdfd;
+    padding: 45px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    border-left: 6px solid #1a365d; /* Cambiado a azul para unificar la identidad del sitio */
+}
+
+.tarjeta-info h2 {
+    font-size: 2.2rem;
+    color: #111111;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.tarjeta-info p {
+    font-size: 1.2rem;
+    color: #444444;
+    line-height: 1.8;
+}
+
+/* ==========================================================================
+   5. DISEÑO DE LAS TARJETAS / CUADROS DE CARRERAS (CATÁLOGO)
+   ========================================================================== */
+.carreras-section {
+    padding: 60px 20px;
+    background-color: #f4f6f9; /* Un fondo gris claro para diferenciarlo del inicio */
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.carreras-titulo {
+    font-size: 2.3rem;
+    color: #1a365d;
+    margin-bottom: 10px;
+}
+
+.carreras-subtitulo {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+/* Contenedor en cuadrícula (Grid) */
+.carreras-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Tarjetas individuales de cada carrera */
+.carrera-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    text-align: left;
+    position: relative;
+    border-top: 5px solid #1a365d; /* Línea de color azul arriba */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto al pasar el mouse por la tarjeta */
+
+
+.carrera-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #edf2f7;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 10px;
+    color: #4a5568;
+}
+
+.carrera-card h3 {
+    color: #2b6cb0;
+    margin-top: 10px;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.carrera-card p {
+    color: #4a5568;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.carrera-detalles {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #edf2f7;
+    font-size: 0.85rem;
+    color: #718096;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Botón llamativo abajo de cada cuadro */
+.btn-ver-mas {
+    display: inline-block;
+    margin-top: 15px;
+    text-align: center;
+    background: #1a365d;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.btn-ver-mas:hover {
+    background: #2b6cb0;
+}
+
+/* ==========================================================================
+   6. ESTILOS DEL BOTÓN VOLVER (PÁGINA CATÁLOGO)
+   ========================================================================== */
+.contenedor-volver {
+    max-width: 1200px;
+    margin: 0 auto 20px auto;
+    text-align: left; /* Lo alinea a la izquierda de la pantalla */
+    padding: 0 15px;
+}
+
+.btn-volver {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #1a365d; /* Texto azul oscuro */
+    border: 2px solid #1a365d; /* Borde azul */
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+/* Efecto cuando pasas el mouse por encima del botón Volver */
+.btn-volver:hover {
+    background-color: #1a365d;
+    color: #ffffff; /* Invierte los colores a azul con letras blancas */
+    transform: translateX(-3px); /* Pequeño efecto de empuje a la izquierda */
+}
+
+/* ==========================================================================
+   7. ADAPTACIÓN PARA DISPOSITIVOS MÓVILES (RESPONSIVE)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .custom-header {
+        padding: 20px;
+        flex-direction: column; /* En celulares se apilan para que no se choque nada */
+        gap: 20px;
+        text-align: center;
+    }
+    .menu-container {
+        min-width: auto; 
+        justify-content: center;
+        gap: 15px;
+    }
+    .texto-institucional {
+        font-size: 1.4rem;
+    
+    }
+    .menu-desplegable {
+        left: 20px;
+        right: 20px;
+        top: auto;
+    }
+    .tarjeta-info {
+        padding: 30px;
+    }
+}
+
+/* Solución hover opcional */
+.nav-item {
+    position: relative;
+}
+.nav-item:hover .dropdown-content {
+    display: block;
+
+}
+.logo-grande {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  background: transparent;
+}

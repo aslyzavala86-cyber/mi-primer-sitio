@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informática - Instituto José Trinidad Cabañas</title>
+    <link rel="stylesheet" href="Menu.css">
+    <style>
+        /* Contenedor Principal Adaptado a tu Estilo Original */
+        .detalle-carrera-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 25px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Hero Banner con tus colores institucionales */
+        .header-carrera {
+            background: linear-gradient(135deg, #1a365d 0%, #11243f 100%);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(26, 54, 93, 0.15);
+            color: white;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .header-carrera h1 {
+            font-size: 3rem;
+            margin: 0 0 10px 0;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .header-carrera p {
+            color: #63b3ed;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 0;
+        }
+
+        /* Títulos de Bloques */
+        .titulo-seccion {
+            color: #1a365d;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 40px 0 20px 0;
+            padding-left: 15px;
+            border-left: 5px solid #2b6cb0;
+        }
+
+        /* ==========================================
+           MOSAICO DE CUADROS (GRID)
+           ========================================== */
+        .mosaico-moderno {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 992px) {
+            .mosaico-moderno { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .mosaico-moderno { grid-template-columns: 1fr; }
+        }
+
+        /* Cuadros de asignaturas y datos */
+        .mosaico-item {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mosaico-item.ancho { grid-column: span 2; }
+        @media (max-width: 600px) { .mosaico-item.ancho { grid-column: span 1; } }
+
+        /* Cuadros destinados a ser IMÁGENES completas */
+        .mosaico-item.tarjeta-imagen {
+            padding: 0;
+            position: relative;
+            min-height: 260px;
+            background: #edf2f7;
+        }
+
+        .mosaico-item.tarjeta-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+        }
+
+        .overlay-imagen {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(26, 54, 93, 0.9));
+            padding: 20px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* ==========================================
+           ESTILOS PARA RELLENAR EL HUECO DE INFORMÁTICA APLICADA
+           ========================================== */
+        .mosaico-item.ancho.tarjeta-mixta {
+            display: flex;
+            flex-direction: row; /* Fuerza Texto Izquierda, Imagen Derecha */
+            padding: 0 !important; /* La foto toca los bordes perfectamente */
+            overflow: hidden;
+        }
+
+        .tarjeta-mixta .contenido-texto {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .tarjeta-mixta .contenedor-foto {
+            flex: 1; /* Absorbe el espacio en blanco del Grid */
+            position: relative;
+            min-height: 100%;
+            background: #edf2f7;
+        }
+
+        .tarjeta-mixta .contenedor-foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .mosaico-item.ancho.tarjeta-mixta { flex-direction: column; }
+            .tarjeta-mixta .contenedor-foto { min-height: 200px; }
+        }
+
+        .mosaico-item h3 {
+            color: #2b6cb0;
+            font-size: 1.35rem;
+            margin: 0 0 12px 0;
+            font-weight: 700;
+        }
+
+        .mosaico-item p {
+            color: #4a5568;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .badge-horas {
+            align-self: flex-start;
+            background: #ebf8ff;
+            color: #2b6cb0;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        /* Lista de asignaturas generales */
+        .contenedor-generales {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .badge-general {
+            background: #f7fafc;
+            color: #4a5568;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* ==========================================
+           SECCIÓN DE PASIÓN Y COMPETENCIAS (MAS SALSA)
+           ========================================== */
+        .lista-salsa {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .lista-salsa li {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .lista-salsa li::before {
+            content: "⚡";
+            color: #dd6b20;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="custom-header">
+        <div class="menu-container">
+            <button class="boton-desplegable" id="btnMenu" aria-label="Abrir menú">☰</button>
+            <span class="texto-institucional">MENÚ INSTITUCIONAL</span>
+            
+            <nav class="menu-desplegable" id="menuContenido">
+               <a href="menuscar.html">Inicio</a>
+                <a href="Quines Somos.html">Quienes Somos</a>
+                <a href="CatalogoCarreras.html">Carreras</a>
+                <a href="Areas.html">Areas</a>
+                <a href="Jornadas.html">Jornadas</a>
+                 <a href="Personal administrativo.html">Personal administrativo</a>
+                   <a href="docentes.html">Docentes</a>
+            </nav>
+        </div>
+
+        <div class="logo-container">
+            <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 7.10.33 PM.jpeg" alt="Logo Instituto" class="logo-grande">
+        </div>
+    </header>
+
+    <main class="detalle-carrera-container">
+
+        <div class="header-carrera">
+            <p>Bachillerato Técnico Profesional</p>
+            <h1>Informática</h1>
+        </div>
+
+        <h2 class="titulo-seccion"> ¿Por qué elegir Informática? El Futuro es Hoy</h2>
+        <div class="mosaico-moderno">
+            
+            <div class="mosaico-item ancho" style="background: linear-gradient(to right, #ffffff, #ebf8ff);">
+                <h3>Importancia Estratégica y Enfoque Institucional</h3>
+                <p>En el Instituto José Trinidad Cabañas no formamos simples usuarios de tecnología; moldeamos a los arquitectos del mañana. La informática es la carrera con mayor crecimiento global. Nuestro objetivo es sembrar mentes analíticas capaces de crear software, estructurar redes y automatizar procesos comerciales, garantizando un perfil técnico altamente competitivo.</p>
+            </div>
+
+            <div class="mosaico-item">
+                <h3>Lo que serás capaz de crear:</h3>
+                <ul class="lista-salsa">
+                    <li>Sistemas de bases de datosempresariales.</li>
+                    <li>Plataformas web modernas e interactivas.</li>
+                    <li>Seguridad e infraestructura de redes.</li>
+                    <li>Soporte y diagnóstico avanzado de hardware.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <h2 class="titulo-seccion"> Formación Inicial — Undécimo Grado</h2>
+        
+        <div class="mosaico-moderno">
+            
+            <div class="mosaico-item ancho">
+                <h3>La Base de la Ingeniería Computacional</h3>
+                <p>El primer año combina las ciencias científicas complementarias con los pilares del desarrollo de software. Los estudiantes adquieren la lógica computacional esencial necesaria para resolver problemas complejos a través de líneas de código y algoritmos.</p>
+            </div>
+
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 6.29.27 PM.jpeg" alt="Estudiante programando">
+                <div class="overlay-imagen">Prácticas en Estaciones Dedicadas</div>
+            </div>
+
+            <div class="mosaico-item">
+                <span class="badge-horas">8 Horas Semanales</span>
+                <h3>Programación I</h3>
+                <p>Introducción algorítmica. Desarrollo de la lógica estructurada, variables y condicionales utilizando código real.</p>
+            </div>
+
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 6.18.07 PM (1).jpeg" alt="Líneas de código estructurado">
+                <div class="overlay-imagen">Entornos de Desarrollo Lógico</div>
+            </div>
+
+            <div class="mosaico-item">
+                <span class="badge-horas">4 Horas Semanales</span>
+                <h3>Análisis y Diseño</h3>
+                <p>Modelado lógico de sistemas de información, diagramas de flujos y control de bases de datos relacionales.</p>
+            </div>
+
+            <div class="mosaico-item">
+                <span class="badge-horas">6 Horas Semanales</span>
+                <h3>Ofimática Profesional</h3>
+                <p>Gestión avanzada de bases de datos de oficina, hojas de cálculo complejas y herramientas integradas de administración.</p>
+            </div>
+
+            <div class="mosaico-item ancho tarjeta-mixta">
+                <div class="contenido-texto">
+                    <span class="badge-horas">2 Horas Semanales</span>
+                    <h3>Informática Aplicada</h3>
+                    <p>Análisis evolutivo de los sistemas globales y reconocimiento arquitectónico de componentes internos de hardware.</p>
+                </div>
+                <div class="contenedor-foto">
+                    <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 6.18.07 PM.jpeg" alt="Hardware e Informática Aplicada">
+                </div>
+            </div>
+
+            <div class="mosaico-item ancho">
+                <h3>Tronco Científico General</h3>
+                <p>Asignaturas fundamentales obligatorias que complementan el perfil académico del egresado:</p>
+                <div class="contenedor-generales">
+                    <span class="badge-general">Legislación Informática</span>
+                    <span class="badge-general">Matemáticas</span>
+                    <span class="badge-general">Inglés Técnico</span>
+                    <span class="badge-general">Física Aplicada</span>
+                    <span class="badge-general">Español</span>
+                    <span class="badge-general">Apreciación Artística</span>
+                </div>
+            </div>
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-03 at 2.02.43 PM.jpeg" alt="Hardware Avanzado">
+                <div class="overlay-imagen">Pruebas de Mantenimiento</div>
+            </div>
+        </div>
+
+        <h2 class="titulo-seccion"> Especialización Senior — Duodécimo Grado</h2>
+        
+        <div class="mosaico-moderno">
+            
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 6.27.07 PM.jpeg" alt="Interfaz de Visual Basic">
+                <div class="overlay-imagen">Sistemas Empresariales en Pantalla</div>
+            </div>
+
+            <div class="mosaico-item ancho" style="background: linear-gradient(to right, #1a365d, #2a4365); color: white;">
+                <h3 style="color: #63b3ed;">Inmersión Técnica Absoluta</h3>
+                <p style="color: #e2e8f0;">En el último año, las asignaturas generales se eliminan por completo. Los estudiantes dedican el 100% de su carga horaria a la práctica real dentro de los laboratorios, actuando como desarrolladores web, diseñadores y administradores de redes.</p>
+            </div>
+
+            <div class="mosaico-item">
+                <span class="badge-horas">7 Horas Semanales</span>
+                <h3>Programación II</h3>
+                <p>Construcción de sistemas comerciales de software funcional utilizando plataformas robustas como Visual Basic.</p>
+            </div>
+
+            <div class="mosaico-item">
+                <span class="badge-horas">7 Horas Semanales</span>
+                <h3>Producciones Digitales</h3>
+                <p>Diseño publicitario institucional, edición gráfica avanzada con Photoshop y streaming interactivo en OBS Studio.</p>
+            </div>
+
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 6.18.07 PM.jpeg" alt="Espacio creativo multimedia">
+                <div class="overlay-imagen">Diseño Multimedia y Edición Digital</div>
+            </div>
+
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 6.18.06 PM (1).jpeg" alt="Infraestructura de Redes">
+                <div class="overlay-imagen">Arquitectura y Enrutamiento de Datos</div>
+            </div>
+
+            <div class="mosaico-item">
+                <span class="badge-horas">6 Horas Semanales</span>
+                <h3>Mantenimiento de PCs</h3>
+                <p>Diagnóstico avanzado, ensamble y reparación física de hardware de computadoras y dispositivos periféricos.</p>
+            </div>
+
+            <div class="mosaico-item">
+                <span class="badge-horas">4 Horas Semanales</span>
+                <h3>Comunicaciones y Redes</h3>
+                <p>Configuración de redes de datos locales, ponchado de cables UTP, esquemas de subredes y protocolos de enlace.</p>
+            </div>
+
+            <div class="mosaico-item">
+                <span class="badge-horas">6 Horas Semanales</span>
+                <h3>Desarrollo Web</h3>
+                <p>Programación frontend de interfaces digitales interactivas, código CSS avanzado y diseño de sitios web adaptables.</p>
+            </div>
+
+            <div class="mosaico-item">
+                <span class="badge-horas">6 Horas Semanales</span>
+                <h3>Gestión Empresarial</h3>
+                <p>Estructuración comercial de presupuestos técnicos, análisis de viabilidad y lanzamiento de startups de TI.</p>
+            </div>
+        <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-03 at 2.02.43 PM (1).jpeg" alt="Laboratorio de Desarrollo">
+                <div class="overlay-imagen">Prácticas de Programación Aplicada</div>
+            </div>
+        </div>
+
+        <h2 class="titulo-seccion"> Infraestructura y la Identidad de la Carrera</h2>
+        <div class="mosaico-moderno">
+            
+            <div class="mosaico-item">
+                <h3> Dos Laboratorios de Alto Rendimiento</h3>
+                <p>Garantizamos educación individualizada de calidad: poseemos dos laboratorios de computación independientes completamente equipados para que cada estudiante trabaje exclusivamente en su propia estación de trabajo.</p>
+            </div>
+
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 6.18.08 PM.jpeg" alt="Estudiantes en el laboratorio">
+                <div class="overlay-imagen">Infraestructura Tecnológica Propia</div>
+            </div>
+
+            <div class="mosaico-item">
+                <h3> Equipo de Docentes Especializados</h3>
+                <p>Contamos con un selecto staff de maestros técnicos en informática que asesoran, guían y evalúan los proyectos lógicos avanzados desarrollados por los estudiantes.</p>
+            </div>
+
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 6.18.05 PM.jpeg" alt="Semana del Programador">
+                <div class="overlay-imagen">Semana del Programador: Comunidad e Innovación</div>
+            </div>
+
+            <div class="mosaico-item ancho" style="background: linear-gradient(to right, #f7fafc, #edf2f7);">
+                <h3> Evento Cumbre: La Semana del Programador</h3>
+                <p>La informática en nuestro instituto se vive con pasión. Cada año celebramos a lo grande una semana completa de conferencias, hackatones de código extremo, torneos de lógica computacional y la exposición abierta de proyectos de software y producciones multimedia desarrolladas de forma exclusiva por nuestros estudiantes.</p>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const btnMenu = document.getElementById('btnMenu');
+            const menuContenido = document.getElementById('menuContenido');
+
+            if (btnMenu && menuContenido) {
+                btnMenu.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const displayActual = window.getComputedStyle(menuContenido).display;
+                    if (displayActual === 'none') {
+                        menuContenido.style.display = 'flex';
+                    } else {
+                        menuContenido.style.display = 'none';
+                    }
+                });
+
+                document.addEventListener('click', function() {
+                    menuContenido.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
