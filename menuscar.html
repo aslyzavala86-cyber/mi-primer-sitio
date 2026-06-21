@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Institucional - Instituto José Trinidad Cabañas</title>
+    <link rel="stylesheet" href="Menu.css">
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR AZUL -->
+    <header class="custom-header">
+        <div class="menu-container">
+            <button class="boton-desplegable" id="btnMenu" aria-label="Abrir menú">☰</button>
+            <span class="texto-institucional">MENÚ INSTITUCIONAL</span>
+            
+            <nav class="menu-desplegable" id="menuContenido">
+                <a href="menuscar.html">Inicio</a>
+                <a href="Quines Somos.html">Quienes Somos</a>
+                <a href="CatalogoCarreras.html">Carreras</a>
+                <a href="Areas.html">Areas</a>
+                <a href="Jornadas.html">Jornadas</a>
+                <a href="Personal administrativo.html">Personal administrativo</a>
+                  <a href="docentes.html">Docentes</a>
+            </nav>
+        </div>
+
+        <div class="logo-container">
+            <img src="C:\xampp mi AMOR\htdocs\publicado\tuyo.jpg" class="logo-grande">
+        </div>
+    </header>
+
+    <main class="seccion-info" id="inicio">
+        <section id="mision" class="tarjeta-info">
+            <h2>Nuestra Misión</h2>
+            <p>Somos una Institucion Educativa comprometida a inculcar los valores morales,culturales e intelectuales para formar hombres y mujeres de bien, capaces de contriburi al desarrollo de nuestro pais con una formacion en las diferentes areas de Ciclo Basico Técnico, Bachillerato tecnico en computacion, Educacion Comercial.</p>
+        </section>
+
+        <section id="vision" class="tarjeta-info">
+            <h2>Nuestra Visión</h2>
+            <p>Ser una Institucion educativa lider, formando jovenes capaces de poner en practica los conocimientos Técnico y cientificos en la vida laboral y social.</p>
+        </section>
+    </main>
+
+    <script>
+        const btnMenu = document.getElementById('btnMenu');
+        const menuContenido = document.getElementById('menuContenido');
+
+        btnMenu.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            menuContenido.classList.toggle('activo');
+        });
+
+        document.addEventListener('click', () => {
+            menuContenido.classList.remove('activo');
+        });
+    </script>
+</body>
+</html>

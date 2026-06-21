@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Administrativo - Instituto Oficial Polivalente José Trinidad Cabañas</title>
+    
+    <!-- ESTILOS COMPLETOS INTEGRADOS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f7fafc;
+            color: #2d3748;
+        }
+
+        /* BARRA SUPERIOR */
+        .custom-header {
+            background-color: #1a365d;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .menu-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .boton-desplegable {
+            background: #2b6cb0;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .boton-desplegable:hover {
+            background: #4815d5;
+        }
+
+        .texto-institucional {
+            color: white;
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+        }
+
+        /* MENÚ DESPLEGABLE */
+        .menu-desplegable {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 40px;
+            background: white;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.15);
+            border-radius: 0 0 8px 8px;
+            flex-direction: column;
+            width: 260px;
+            overflow: hidden;
+        }
+
+        .menu-desplegable a {
+            color: #2d3748;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #edf2f7;
+            transition: all 0.3s;
+        }
+
+        .menu-desplegable a:hover {
+            background: #f7fafc;
+            color: #2b6cb0;
+            padding-left: 25px;
+        }
+
+        .logo-grande {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  background: transparent;
+}
+        
+
+        /* DISEÑO DE TARJETAS HORIZONTALES */
+        .mosaico-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .mosaico-item {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: row;
+            min-height: 280px;
+            overflow: hidden;
+            margin-bottom: 35px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .mosaico-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .imagen-tarjeta {
+            width: 35%;
+            min-width: 280px;
+            background: #e2e8f0;
+            position: relative;
+        }
+
+        .imagen-tarjeta img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .contenido-tarjeta {
+            width: 65%;
+            padding: 35px;
+            text-align: justify;
+            display: flex;
+            align-items: center;
+        }
+
+        .badge-horario {
+            display: inline-block;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .contenido-tarjeta h3 {
+            color: #1a365d;
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+
+        .contenido-tarjeta p {
+            color: #4a5568;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* RESPONSIVO PARA MÓVILES */
+        @media (max-width: 768px) {
+            .mosaico-item {
+                flex-direction: column;
+            }
+            .imagen-tarjeta {
+                width: 100%;
+                height: 250px;
+            }
+            .contenido-tarjeta {
+                width: 100%;
+                padding: 25px;
+            }
+            .custom-header {
+                padding: 15px 20px;
+            }
+            .menu-desplegable {
+                left: 20px;
+                width: calc(100% - 40px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR AZUL INSTITUCIONAL -->
+    <header class="custom-header">
+        <div class="menu-container">
+            <button class="boton-desplegable" id="btnMenu" aria-label="Abrir menú">☰</button>
+            <span class="texto-institucional">MENÚ INSTITUCIONAL</span>
+            
+            <!-- MENÚ DESPLEGABLE CON LA OPCIÓN INTEGRADA -->
+            <nav class="menu-desplegable" id="menuContenido">
+                <a href="menuscar.html">Inicio</a>
+                <a href="quienes_somos.html">Quiénes Somos</a>
+                <a href="CatalogoCarreras.html">Carreras</a>
+                <a href="Areas.html">Áreas</a>
+                <a href="Jornadas.html">Jornadas</a>
+                <a href="personal_administrativo.html">Personal Administrativo</a>
+                <a href="docentes.html">Docentes</a>
+            </nav>
+        </div>
+
+        <div class="logo-container">
+            <img src="C:\Users\valer\Pictures\tyu.jpg" alt="Logo Instituto" class="logo-grande">
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="mosaico-container">
+        
+        <!-- INTRODUCCIÓN DE LA SECCIÓN -->
+        <div style="text-align: center; margin-bottom: 50px; margin-top: 20px;">
+            <h2 style="color: #1a365d; font-size: 2.4rem; margin-bottom: 12px;">Liderazgo que Inspira</h2>
+            <p style="color: #4a5568; max-width: 800px; margin: 0 auto; font-size: 1.15rem; line-height: 1.6;">
+                Te presentamos al equipo humano encargado de guiar, planificar y administrar el rumbo de nuestra querida institución. Un grupo de profesionales comprometidos las veinticuatro horas con la excelencia educativa y el bienestar de cada estudiante.
+            </p>
+        </div>
+
+        <!-- 1. DIRECTORA: JUSTA GEOVANNY SPERS -->
+        <div class="mosaico-item" style="border-top: 6px solid #1a365d;">
+            <div class="imagen-tarjeta">
+                <img src="C:\Users\valer\Pictures\juju.jpeg" alt="Directora Justa Geovanny Spers">
+            </div>
+            <div class="contenido-tarjeta">
+                <div>
+                    <span class="badge-horario" style="background-color: #1a365d;">Dirección General</span>
+                    <h3>Justa Geovanny Spers</h3>
+                    <p>Al frente de nuestra gran familia institucional, la Directora lidera con una visión transformadora y un compromiso inquebrantable. Su gestión se destaca por coordinar los esfuerzos de la planta docente, impulsar proyectos de mejora en la infraestructura del campus y asegurar que el instituto se mantenga a la vanguardia tecnológica y pedagógica, priorizando siempre un ambiente de comunicación horizontal y democrática con toda la comunidad.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. SUBDIRECTOR DE LA MAÑANA: ISRAEL -->
+        <div class="mosaico-item" style="border-top: 6px solid #2b6cb0;">
+            <div class="imagen-tarjeta">
+                <img src="C:\Users\valer\Pictures\lolo.jpg" alt="Subdirector Israel">
+            </div>
+            <div class="contenido-tarjeta">
+                <div>
+                    <span class="badge-horario" style="background-color: #2b6cb0;">Subdirección - Jornada Matutina</span>
+                    <h3>Israel Ramirez</h3>
+                    <p>Encargado de vitalizar las primeras horas del día escolar, el Subdirector Israel destaca por su impecable control organizativo y disciplina propositiva en la Jornada Matutina. Su labor se enfoca en el seguimiento diario del rendimiento académico, la coordinación de los horarios docentes y el acompañamiento cercano a los estudiantes para asegurar que inicien cada jornada con el máximo entusiasmo y enfoque en sus metas didácticas.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. SUBDIRECTORA DE LA TARDE: CAROLINA MARTINEZ -->
+        <div class="mosaico-item" style="border-top: 6px solid #1a365d;">
+            <div class="imagen-tarjeta">
+                <img src="C:\Users\valer\Pictures\lulo.jpg" alt="Subdirectora Carolina Martinez">
+            </div>
+            <div class="contenido-tarjeta">
+                <div>
+                    <span class="badge-horario" style="background-color: #1a365d;">Subdirección - Jornada Vespertina</span>
+                    <h3>Carolina Martinez</h3>
+                    <p>Con un liderazgo dinámico y una gran empatía, Carolina Martínez guía la Jornada Vespertina velando por la excelencia académica y la convivencia armónica. Su gestión sobresale por la resolución efectiva de retos cotidianos, la supervisión de las actividades prácticas en los talleres técnicos y el trabajo en equipo con el Departamento de Orientación para respaldar integralmente a los jóvenes en sus horarios de estudio.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. COORDINADORA DE INFORMÁTICA: LEONOR BANEGAS -->
+        <div class="mosaico-item" style="border-top: 6px solid #2b6cb0;">
+            <div class="imagen-tarjeta">
+                <!-- AJUSTA LA RUTA DE LA IMAGEN DE LA COORDINADORA AQUÍ -->
+                <img src="C:\Users\valer\Pictures\powe.jpg" alt="Coordinadora Leonor Banegas">
+            </div>
+            <div class="contenido-tarjeta">
+                <div>
+                    <span class="badge-horario" style="background-color: #2b6cb0;">Coordinación de Informática</span>
+                    <h3>Leonor Banegas</h3>
+                    <p>Como encargada estratégica del área tecnológica, la Coordinadora supervisa de forma integral la gestión de los laboratorios informáticos, el desarrollo del plan de estudios de los bachilleratos técnicos y la implementación de herramientas digitales aplicadas a la educación. Su labor administrativa es clave para asegurar la optimización de los recursos tecnológicos y la actualización metodológica en la enseñanza de la computación.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. SECRETARIA: NORMA QUEZADA -->
+        <div class="mosaico-item" style="border-top: 6px solid #1a365d;">
+            <div class="imagen-tarjeta">
+                <img src="C:\Users\valer\Pictures\kiko.jpg" alt="Secretaria Norma Quezada">
+            </div>
+            <div class="contenido-tarjeta">
+                <div>
+                    <span class="badge-horario" style="background-color: #1a365d;">Secretaría General</span>
+                    <h3>Norma Quezada</h3>
+                    <p>El corazón documental de nuestra institución está resguardado por Norma Quezada. Su puesto destaca por la máxima eficiencia, orden y confidencialidad en el manejo de los expedientes de matrícula, certificaciones de estudios y actas de graduación. Con una atención amable y profesional, es el enlace clave que facilita todos los trámites legales y administrativos tanto para alumnos vigentes como para nuestros egresados.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. ADMINISTRADORA: MARYONY -->
+        <div class="mosaico-item" style="border-top: 6px solid #2b6cb0;">
+            <div class="imagen-tarjeta">
+                <img src="C:\Users\valer\Pictures\yulo.jpg" alt="Administradora Maryony">
+            </div>
+            <div class="contenido-tarjeta">
+                <div>
+                    <span class="badge-horario" style="background-color: #2b6cb0;">Administración Financiera y de Recursos</span>
+                    <h3>Maryony Nuñez</h3>
+                    <p>La sostenibilidad y optimización de nuestros recursos e infraestructura están en manos de Maryony. Su rol destaca por una transparente y rigurosa planificación financiera, administrando con precisión los recursos que permiten el mantenimiento de las aulas pedagógicas, el equipamiento de los laboratorios tecnológicos y la ejecución de proyectos de autogestión en beneficio de la comunidad del Poli Cabañas.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- JAVASCRIPT DEL MENÚ DESPLEGABLE -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const btnMenu = document.getElementById('btnMenu');
+            const menuContenido = document.getElementById('menuContenido');
+
+            if (btnMenu && menuContenido) {
+                btnMenu.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const displayActual = window.getComputedStyle(menuContenido).display;
+                    if (displayActual === 'none') {
+                        menuContenido.style.display = 'flex';
+                    } else {
+                        menuContenido.style.display = 'none';
+                    }
+                });
+
+                document.addEventListener('click', function() {
+                    menuContenido.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

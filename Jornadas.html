@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jornadas de Estudio - Instituto José Trinidad Cabañas</title>
+    <link rel="stylesheet" href="Menu.css">
+    <style>
+        /* Contenedor Principal */
+        .jornadas-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 25px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Hero Banner */
+        .header-jornadas {
+            background: linear-gradient(135deg, #1a365d 0%, #1a365d 100%);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(26, 54, 93, 0.15);
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header-jornadas h1 {
+            font-size: 3rem;
+            margin: 0 0 10px 0;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .header-jornadas p {
+            color: #f7fafc;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 0;
+        }
+
+        /* Títulos de Secciones */
+        .titulo-seccion {
+            color: #1a365d;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 40px 0 20px 0;
+            padding-left: 15px;
+            border-left: 5px solid #2b6cb0;
+        }
+
+        /* ==========================================
+           MOSAICO DE JORNADAS (GRID MODERNO)
+           ========================================== */
+        .mosaico-jornadas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 992px) {
+            .mosaico-jornadas { grid-template-columns: 1fr; }
+        }
+
+        /* Tarjetas del Mosaico */
+        .mosaico-item {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid #f7fafc;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 35px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mosaico-item.ancho-completo { grid-column: span 2; }
+        @media (max-width: 992px) { .mosaico-item.ancho-completo { grid-column: span 1; } }
+
+        /* Contenido de texto */
+        .mosaico-item h3 {
+            color: #1a365d;
+            font-size: 1.6rem;
+            margin: 0 0 12px 0;
+            font-weight: 700;
+        }
+
+        .mosaico-item p {
+            color: #1a365d;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0 0 15px 0;
+        }
+
+        /* Badges de Horarios */
+        .badge-horario {
+            display: inline-block;
+            background: #ebf8ff;
+            color: #1a365d;
+            padding: 6px 14px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #1a365d;
+            text-transform: uppercase;
+        }
+
+        /* Bloque de Perfil de Estudiante */
+        .perfil-estudiante {
+            background: #f7fafc;
+            border-left: 4px solid #1a365d;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+
+        .perfil-estudiante strong {
+            color: #1a365d;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .perfil-estudiante ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #1a365d;
+            font-size: 0.95rem;
+        }
+
+        .perfil-estudiante li {
+            margin-bottom: 6px;
+        }
+
+        /* Contenedor de Oferta de Carreras y Áreas */
+        .oferta-carreras {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .badge-carrera {
+            background: #edf2f7;
+            color: #1a365d;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 6px;
+            border: 1px solid #cbd5e0;
+        }
+
+        .badge-area {
+            background: #f7fafc;
+            color: #1a365d;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 6px;
+            border: 1px solid #1a365d;
+        }
+
+        .badge-acelerado {
+            background: #fff5f5;
+            color: #c53030;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border-radius: 6px;
+            border: 1px solid #feb2b2;
+        }
+
+        .subtitulo-interno {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #1a365d;
+            font-weight: 700;
+            margin: 20px 0 8px 0;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR AZUL INSTITUCIONAL -->
+    <header class="custom-header">
+        <div class="menu-container">
+            <button class="boton-desplegable" id="btnMenu" aria-label="Abrir menú">☰</button>
+            <span class="texto-institucional">MENÚ INSTITUCIONAL</span>
+            
+            <nav class="menu-desplegable" id="menuContenido">
+              <a href="menuscar.html">Inicio</a>
+                <a href="Quines Somos.html">Quienes Somos</a>
+                <a href="CatalogoCarreras.html">Carreras</a>
+                <a href="Areas.html">Areas</a>
+                <a href="Jornadas.html">Jornadas</a>
+                 <a href="Personal administrativo.html">Personal administrativo</a>
+                   <a href="docentes.html">Docentes</a>
+            </nav>
+        </div>
+
+        <div class="logo-container">
+            <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 7.10.33 PM.jpeg" alt="Logo Instituto" class="logo-grande">
+        </div>
+    </header>
+
+    <!-- CUERPO DE LAS JORNADAS -->
+    <main class="jornadas-container">
+
+        <!-- HERO BANNER -->
+        <div class="header-jornadas">
+            <p>Flexibilidad, Enfoque y Orientación Profesional</p>
+            <h1>Jornadas y Perfiles Estudiantiles</h1>
+        </div>
+
+        <!-- SECCIÓN DE INTRODUCCIÓN -->
+        <div class="mosaico-jornadas">
+            <div class="mosaico-item ancho-completo" style="background: linear-gradient(to right, #ffffff, #f7fafc); padding: 30px;">
+                <h3>Un Horario para Cada Estilo de Vida</h3>
+                <p>En el Instituto José Trinidad Cabañas organizamos nuestra oferta académica pensando en la realidad de nuestra comunidad. Diseñamos entornos específicos que permiten tanto la dedicación exclusiva al aprendizaje técnico avanzado como la flexibilidad necesaria para quienes ya equilibran su formación con el mundo laboral.</p>
+            </div>
+        </div>
+
+        <!-- SECCIÓN DE TARJETAS DE JORNADAS -->
+        <h2 class="titulo-seccion"> Oferta Académica por Turnos</h2>
+        
+        <div class="mosaico-jornadas">
+
+            <!-- JORNADA MATUTINA -->
+            <div class="mosaico-item" style="border-top: 5px solid #1a365d;">
+                <div>
+                    <span class="badge-horario" style="background: #cbd5e0; color: #1a365d; border-color: #1a365d;"> Jornada Matutina</span>
+                    <h3>Turno de la Mañana</h3>
+                    <p>Es la jornada académica más robusta y diversa del instituto. Concentra la mayor variedad de bachilleratos y la apertura completa de nuestros laboratorios y talleres industriales desde tempranas horas.</p>
+                    
+                    <div class="perfil-estudiante" style="border-left-color: #1a365d; background: #f7fafc;">
+                        <strong> ¿Para quién es?</strong>
+                        <ul>
+                            <li><strong>Alumnos de dedicación exclusiva:</strong> Jóvenes enfocados al 100% en sus estudios, ideales para aprovechar las primeras horas del día con máxima concentración.</li>
+                            <li><strong>Mentes técnicas y comerciales:</strong> Quienes buscan un desarrollo profundo en ingenierías prácticas o análisis contables continuos.</li>
+                        </ul>
+                    </div>
+
+                    <div class="subtitulo-interno"> Carreras en esta Jornada:</div>
+                    <div class="oferta-carreras">
+                        <span class="badge-carrera">Humanidades</span>
+                        <span class="badge-carrera">Electricidad</span>
+                        <span class="badge-carrera">Finanzas</span>
+                        <span class="badge-carrera">Informática</span>
+                    </div>
+
+                    <div class="subtitulo-interno"> Áreas Técnicas activas:</div>
+                    <div class="oferta-carreras">
+                        <span class="badge-area">Área de Madera</span>
+                        <span class="badge-area">Estructura Metálica</span>
+                        <span class="badge-area">Hogar</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JORNADA VESPERTINA -->
+            <div class="mosaico-item" style="border-top: 5px solid #1a365d;">
+                <div>
+                    <span class="badge-horario" style="background: #cbd5e0; color: #1a365d; border-color: #cbd5e0;"> Jornada Vespertina</span>
+                    <h3>Turno de la Tarde</h3>
+                    <p>Una jornada optimizada, ágil y de alta especialización digital que reduce la oferta teórica para concentrarse de lleno en las competencias tecnológicas del futuro.</p>
+                    
+                    <div class="perfil-estudiante" style="border-left-color: #1a365d; background: #f7fafc;">
+                        <strong> ¿Para quién es?</strong>
+                        <ul>
+                            <li><strong>Estudiantes con mañanas ocupadas:</strong> Ideal para jóvenes que realizan cursos de idiomas, entrenamientos deportivos, academias de arte o apoyan negocios familiares temprano.</li>
+                            <li><strong>Entusiastas del software:</strong> Perfil perfecto para aquellos enfocados netamente en la computación, desarrollo y soporte técnico.</li>
+                        </ul>
+                    </div>
+
+                    <div class="subtitulo-interno">Carreras en esta Jornada:</div>
+                    <div class="oferta-carreras">
+                        <span class="badge-carrera">Informática</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JORNADA NOCTURNA -->
+            <div class="mosaico-item" style="border-top: 5px solid #1a365d;">
+                <div>
+                    <span class="badge-horario" style="background: #cbd5e0; color: #1a365d; border-color: #1a365d;">Jornada Nocturna</span>
+                    <h3>Turno de la Noche</h3>
+                    <p>Una alternativa de inclusión social y académica de alta especialización digital que optimiza la carga horaria nocturna para enfocarse directamente en el desarrollo profesional informático.</p>
+                    
+                    <div class="perfil-estudiante" style="border-left-color: #1a365d; background: #f7fafc;">
+                        <strong> ¿Para quién es?</strong>
+                        <ul>
+                            <li><strong>Trabajadores activos del área tecnológica:</strong> Especialmente adaptada para jóvenes y adultos incorporados al mercado laboral diurno que desean profesionalizarse en sistemas informáticos.</li>
+                            <li><strong>Alumnos independientes:</strong> Personas con cargas familiares durante el día que necesitan un horario compacto de noche con enfoque moderno y eficiente.</li>
+                        </ul>
+                    </div>
+
+                    <div class="subtitulo-interno">Carreras en esta Jornada:</div>
+                    <div class="oferta-carreras">
+                        <span class="badge-carrera">Informática</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ISEMED -->
+            <div class="mosaico-item" style="border-top: 5px solid #1a365d;">
+                <div>
+                    <span class="badge-horario" style="background: #cbd5e0; color: #1a365d; border-color: #1a365d;">ISEMED (Fines de Semana)</span>
+                    <h3>Educación a Distancia</h3>
+                    <p>Nuestro Sistema de Educación Media a Distancia es un formato semipresencial riguroso y altamente eficiente, donde los contenidos clave se condensan los sábados y domingos.</p>
+                    
+                    <div class="perfil-estudiante" style="border-left-color: #1a365d; background: #f7fafc;">
+                        <strong> ¿Para quién es?</strong>
+                        <ul>
+                            <li><strong>Horarios laborales extendidos:</strong> Para quienes trabajan jornadas completas de lunes a viernes y no pueden asistir a turnos diarios.</li>
+                            <li><strong>Estudiantes de zonas distantes:</strong> Al requerir traslado al instituto solo el fin de semana, reduce gastos de transporte para alumnos de comunidades alejadas.</li>
+                            <li><strong>Perfiles autodidactas o por madurez:</strong> Personas decididas que buscan optimizar su tiempo mediante planes intensivos de graduación rápida.</li>
+                        </ul>
+                    </div>
+
+                    <div class="subtitulo-interno">🎓 Carreras Regulares:</div>
+                    <div class="oferta-carreras">
+                        <span class="badge-carrera">Humanidades</span>
+                        <span class="badge-carrera">Informática</span>
+                        <span class="badge-carrera">Finanzas</span>
+                    </div>
+
+                    <div class="subtitulo-interno"> Modalidad Acelerada (Duración: 1 Año):</div>
+                    <div class="oferta-carreras">
+                        <span class="badge-acelerado">Bachillerato Acelerado</span>
+                    </div>
+                    <p style="font-size: 0.85rem; color: #1a365d; font-style: italic; margin-top: 8px;">*Diseñado bajo la misma base de asignaturas de Humanidades, incorporando además el área de Informática.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- JAVASCRIPT DEL MENÚ -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const btnMenu = document.getElementById('btnMenu');
+            const menuContenido = document.getElementById('menuContenido');
+
+            if (btnMenu && menuContenido) {
+                btnMenu.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const displayActual = window.getComputedStyle(menuContenido).display;
+                    if (displayActual === 'none') {
+                        menuContenido.style.display = 'flex';
+                    } else {
+                        menuContenido.style.display = 'none';
+                    }
+                });
+
+                document.addEventListener('click', function() {
+                    menuContenido.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

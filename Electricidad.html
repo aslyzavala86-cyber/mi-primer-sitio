@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricidad - Instituto José Trinidad Cabañas</title>
+    <link rel="stylesheet" href="Menu.css">
+    <style>
+        /* Contenedor Principal Adaptado a tu Estilo Original */
+        .detalle-carrera-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 25px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Botón Volver */
+
+
+        /* Hero Banner Eléctrico Profesional */
+        .header-carrera {
+            background: linear-gradient(135deg, #1a365d 0%, #11243f 100%);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(26, 54, 93, 0.15);
+            color: white;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .header-carrera h1 {
+            font-size: 3rem;
+            margin: 0 0 10px 0;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .header-carrera p {
+            color: #63b3ed; /* Azul claro profesional */
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 0;
+        }
+
+        /* Títulos de Bloques */
+        .titulo-seccion {
+            color: #1a365d;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 40px 0 20px 0;
+            padding-left: 15px;
+            border-left: 5px solid #2b6cb0;
+        }
+
+        /* ==========================================
+           MOSAICO DE CUADROS (GRID)
+           ========================================== */
+        .mosaico-moderno {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 992px) {
+            .mosaico-moderno { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .mosaico-moderno { grid-template-columns: 1fr; }
+        }
+
+        /* Cuadros de asignaturas y datos */
+        .mosaico-item {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+
+
+        .mosaico-item.ancho { grid-column: span 2; }
+        @media (max-width: 600px) { .mosaico-item.ancho { grid-column: span 1; } }
+
+        /* Cuadros destinados a ser IMÁGENES completas */
+        .mosaico-item.tarjeta-imagen {
+            padding: 0;
+            position: relative;
+            min-height: 260px;
+            background: #edf2f7;
+        }
+
+        .mosaico-item.tarjeta-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+        }
+
+        .overlay-imagen {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(26, 54, 93, 0.9));
+            padding: 20px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .mosaico-item h3 {
+            color: #2b6cb0;
+            font-size: 1.35rem;
+            margin: 0 0 12px 0;
+            font-weight: 700;
+        }
+
+        .mosaico-item p {
+            color: #4a5568;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0 0 10px 0;
+        }
+
+        /* Detalles técnicos */
+        .detalles-tecnicos {
+            font-size: 0.9rem;
+            color: #4a5568;
+            margin-top: 5px;
+            background: #f7fafc;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border-left: 3px solid #cbd5e1;
+        }
+
+        .badge-horas {
+            align-self: flex-start;
+            background: #ebf8ff;
+            color: #2b6cb0;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        /* Lista de asignaturas generales */
+        .contenedor-generales {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .badge-general {
+            background: #f7fafc;
+            color: #4a5568;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Lista de capacidades */
+        .lista-salsa {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .lista-salsa li {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .lista-salsa li::before {
+            content: "⚡";
+            color: #2b6cb0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR AZUL INSTITUCIONAL -->
+    <header class="custom-header">
+        <div class="menu-container">
+            <button class="boton-desplegable" id="btnMenu" aria-label="Abrir menú">☰</button>
+            <span class="texto-institucional">MENÚ INSTITUCIONAL</span>
+            
+            <nav class="menu-desplegable" id="menuContenido">
+                <a href="menuscar.html">Inicio</a>
+                <a href="Quines Somos.html">Quienes Somos</a>
+                <a href="CatalogoCarreras.html">Carreras</a>
+                <a href="Areas.html">Areas</a>
+                <a href="Jornadas.html">Jornadas</a>
+                 <a href="Personal administrativo.html">Personal administrativo</a>
+                   <a href="docentes.html">Docentes</a>
+            </nav>
+        </div>
+
+        <div class="logo-container">
+            <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 7.10.33 PM.jpeg" alt="Logo Instituto" class="logo-grande">
+        </div>
+    </header>
+
+    <!-- CUERPO DE LA CARRERA -->
+    <main class="detalle-carrera-container">
+        
+     
+
+        <!-- HERO BANNER -->
+        <div class="header-carrera">
+            <p>Bachillerato Técnico Profesional</p>
+            <h1>Electricidad</h1>
+        </div>
+
+        <!-- ==========================================
+             BLOQUE DE PASIÓN Y PROPÓSITO INSTITUCIONAL
+             ========================================== -->
+        <h2 class="titulo-seccion"> Domina la Energía que Mueve al Mundo</h2>
+        <div class="mosaico-moderno">
+            
+            <div class="mosaico-item ancho" style="background: linear-gradient(to right, #ffffff, #ebf8ff);">
+                <h3>Importancia Industrial y Enfoque Educativo</h3>
+                <p>En el Instituto José Trinidad Cabañas impulsamos el desarrollo tecnológico desde sus cimientos físicos. La electricidad industrial y residencial es el motor de toda empresa moderna. Nuestro objetivo es formar técnicos analíticos, seguros de sí mismos y altamente calificados, capaces de diseñar redes de potencia, diagnosticar maquinaria automatizada y dominar sistemas de control avanzado bajo normas internacionales de seguridad.</p>
+            </div>
+
+            <div class="mosaico-item">
+                <h3>Tus Futuros Superpoderes:</h3>
+                <ul class="lista-salsa">
+                    <li>Montaje de subestaciones y motores.</li>
+                    <li>Automatización industrial con PLCs.</li>
+                    <li>Diseño de planos residenciales de vanguardia.</li>
+                    <li>Sistemas de energía renovable y solar.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+             BLOQUE 1: UNDÉCIMO GRADO
+             ========================================== -->
+        <h2 class="titulo-seccion"> Formación Técnica de Base — Undécimo Grado</h2>
+        
+        <div class="mosaico-moderno">
+            
+            <div class="mosaico-item ancho">
+                <h3>Inmersión Técnica en el Taller Eléctrico</h3>
+                <p>El primer año de bachillerato introduce al estudiante en el comportamiento analítico y físico de la energía eléctrica. A través de un enfoque práctico intensivo, los alumnos dominan el uso de instrumental de precisión y las normativas esenciales de cableado y diagramación arquitectónica.</p>
+            </div>
+
+            <!-- Imagen 1 -->
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 5.22.55 PM.jpeg" alt="Estudiantes armando circuito en panel">
+                <div class="overlay-imagen">Prácticas de Montaje Eléctrico Real</div>
+            </div>
+
+            <!-- Asignatura 1 -->
+            <div class="mosaico-item">
+                <span class="badge-horas">6 Horas Semanales</span>
+                <h3>Electrotecnia</h3>
+                <p>Análisis profundo del funcionamiento de los circuitos eléctricos, estudio de las leyes fundamentales de la electricidad y comprensión del comportamiento de las magnitudes físicas en redes de energía.</p>
+                <div class="detalles-tecnicos">
+                    <strong> Equipos:</strong> Multímetro digital o analógico, pinza amperimétrica.<br>
+                    <strong> Materiales:</strong> Protoboard, cables de conexión.
+                </div>
+            </div>
+
+            <!-- Imagen 2 -->
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 5.22.56 PM.jpeg" alt="Uso de instrumentos de medición">
+                <div class="overlay-imagen">Instrumentación de Medidas y Calibración</div>
+            </div>
+
+            <!-- Asignatura 2 -->
+            <div class="mosaico-item">
+                <span class="badge-horas">2 Horas Semanales</span>
+                <h3>Mediciones Eléctricas</h3>
+                <p>Uso correcto, calibración y lectura técnica avanzada de los diferentes instrumentos utilizados para la verificación de señales y flujos de corriente eléctrica.</p>
+                <div class="detalles-tecnicos">
+                    <strong> Equipos:</strong> Multímetro, osciloscopio, vatímetro.<br>
+                    <strong>Materiales:</strong> Circuitos de prueba, cables de extensión.
+                </div>
+            </div>
+
+            <!-- Asignatura 3 -->
+            <div class="mosaico-item">
+                <span class="badge-horas">4 Horas Semanales</span>
+                <h3>Reparación de Aparatos Electrodomésticos</h3>
+                <p>Metodologías de taller para diagnosticar averías, desarmar estructuras mecánicas de forma segura, localizar cortocircuitos o fallas internas y reparar integralmente equipos de uso común.</p>
+                <div class="detalles-tecnicos">
+                    <strong> Equipos:</strong> Juego de destornilladores, alicates de punta, cautín o estación de soldar.<br>
+                    <strong> Materiales:</strong> Soldadura de estaño, pasta para soldar, cinta aislante.
+                </div>
+            </div>
+
+            <!-- Asignatura 4 -->
+            <div class="mosaico-item ancho" style="border-left: 5px solid #2b6cb0;">
+                <span class="badge-horas">7 Horas Semanales</span>
+                <h3>Electricidad e Instalaciones Eléctricas</h3>
+                <p>Una de las asignaturas más fuertes, críticas y netamente prácticas de la carrera. Se enfoca de forma rigurosa en el diseño arquitectónico, canalización por tuberías y cableado físico de instalaciones eléctricas bajo estándares técnicos.</p>
+                <div class="detalles-tecnicos">
+                    <strong> Equipos:</strong> Alicate universal, alicate de corte diagonal, alicate de punta redonda.<br>
+                    <strong> Materiales:</strong> Alambres eléctricos, cables conductores de diferentes calibres.
+                </div>
+            </div>
+
+            <!-- Asignatura 5 -->
+            <div class="mosaico-item ancho">
+                <span class="badge-horas">3 Horas Semanales</span>
+                <h3>Dibujo Técnico</h3>
+                <p>Interpretación técnica y diseño profesional de planos eléctricos residenciales e industriales. Creación de diagramas unifilares normalizados para la representación simbólica exacta de interruptores, lámparas, tableros y acometidas.</p>
+                <div class="detalles-tecnicos" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div>
+                        <strong> Herramientas de Taller:</strong> Tablero de dibujo, juego de escuadras, compás de precisión, escalímetro.
+                    </div>
+                    <div>
+                        <strong> Software & Materiales:</strong> AutoCAD. Papel formato DIN A3 o A4, lápices técnicos, borradores de nata.
+                    </div>
+                </div>
+            </div>
+<div class="mosaico-item tarjeta-imagen">
+                <img src="C:\Users\valer\Pictures\Ec2.jpg" alt="Estudiantes armando circuito en panel">
+                <div class="overlay-imagen"></div>
+            </div>
+<div class="mosaico-item tarjeta-imagen">
+                <img src="C:\Users\valer\Pictures\Ec1.jpg" alt="Estudiantes armando circuito en panel">
+                <div class="overlay-imagen">Prácticas de Montaje Eléctrico Real</div>
+            </div>
+            <!-- Tronco General IGUAL al de informática -->
+            <div class="mosaico-item ancho">
+                <h3>Tronco Científico General</h3>
+                <p>Asignaturas fundamentales obligatorias que complementan el perfil académico del egresado técnico. La asignatura de inglés resulta elemental en ambas ramas para interpretar diagramas globales:</p>
+                <div class="contenedor-generales">
+                    <span class="badge-general" style="border-color: #2b6cb0; background: #ebf8ff; color: #2b6cb0;">🇺🇸 Inglés Técnico</span>
+                    <span class="badge-general">Legislación Informática</span>
+                    <span class="badge-general">Matemáticas</span>
+                    <span class="badge-general">Física Aplicada</span>
+                    <span class="badge-general">Español</span>
+                    <span class="badge-general">Apreciación Artística</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+             BLOQUE 2: DUODÉCIMO GRADO (DATOS DEL HORARIO REAL)
+             ========================================== -->
+        <h2 class="titulo-seccion">Especialización Senior Avanzada — Duodécimo Grado</h2>
+        
+        <div class="mosaico-moderno">
+            
+            <!-- Imagen 3 -->
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 5.22.54 PM (1).jpeg" alt="Banco de motores industriales">
+                <div class="overlay-imagen">Maquinaria Eléctrica y Automatización Avanzada</div>
+            </div>
+
+            <div class="mosaico-item ancho" style="background: linear-gradient(to right, #1a365d, #2a4365); color: white;">
+                <h3 style="color: #63b3ed;">Inmersión Industrial Avanzada</h3>
+                <p style="color: #e2e8f0;">Durante el último año, la formación se traslada completamente al ámbito operativo y de automatización industrial. De acuerdo con el plan institucional vigente para la jornada matutina, los estudiantes perfeccionan competencias críticas de control lógico, mantenimiento de máquinas de potencia y diseño de redes de distribución eléctrica.</p>
+            </div>
+
+            <!-- Control y Mando (10 Horas) -->
+            <div class="mosaico-item">
+                <span class="badge-horas">10 Horas Semanales</span>
+                <h3>Control y Mando de Sistemas Eléctricos y Automatización</h3>
+                <p>La asignatura de mayor carga horaria del año. Enfocada intensivamente en el diseño, montaje y diagnóstico de tableros de control de automatismos lógicos y contactores magnéticos industriales.</p>
+            </div>
+
+            <!-- Instalaciones Industriales (9 Horas) -->
+            <div class="mosaico-item">
+                <span class="badge-horas">9 Horas Semanales</span>
+                <h3>Instalaciones Industriales y Redes de Distribución</h3>
+                <p>Estudio práctico avanzado sobre canalizaciones de fuerza motriz, montaje de tableros de distribución general y cálculo técnico de líneas y transformadores de media tensión.</p>
+            </div>
+
+            <!-- Imagen 4 -->
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 5.22.54 PM.jpeg" alt="Rebobinado de motor eléctrico">
+                <div class="overlay-imagen">Taller de Bobinado y Reconstrucción Eléctrica</div>
+            </div>
+
+            <!-- Taller de Rebobinado (7 Horas) -->
+            <div class="mosaico-item">
+                <span class="badge-horas">7 Horas Semanales</span>
+                <h3>Taller de Rebobinado de Maquinas Eléctricas</h3>
+                <p>Metodología puramente práctica en taller para el cálculo de espiras, aislamiento mecánico y rebobinado completo de motores eléctricos de inducción monofásicos y trifásicos.</p>
+            </div>
+
+            <!-- Máquinas Eléctricas (5 Horas) -->
+            <div class="mosaico-item">
+                <span class="badge-horas">5 Horas Semanales</span>
+                <h3>Máquinas Eléctricas</h3>
+                <p>Análisis de funcionamiento, acoplamientos mecánicos, mantenimiento preventivo y de operación de motores de corriente continua, alterna y transformadores de potencia.</p>
+            </div>
+
+            <!-- Fundamentos de Electrónica (4 Horas) -->
+            <div class="mosaico-item">
+                <span class="badge-horas">4 Horas Semanales</span>
+                <h3>Fundamentos de Electrónica y Telecomunicaciones</h3>
+                <p>Estudio de semiconductores, rectificación de señales de potencia y bases críticas de sistemas de comunicación aplicados a redes y automatismos.</p>
+            </div>
+
+            <!-- Gestión Industrial (3 Horas) -->
+            <div class="mosaico-item">
+                <span class="badge-horas">3 Horas Semanales</span>
+                <h3>Gestión Industrial y Habilidades para la Vida</h3>
+                <p>Formación empresarial integral. Planificación estratégica de plantas, seguridad industrial en talleres, elaboración de presupuestos y desarrollo de liderazgo asertivo.</p>
+            </div>
+
+            <!-- Energías Renovables (2 Horas) -->
+            <div class="mosaico-item ancho" style="border-left: 5px solid #2b6cb0;">
+                <span class="badge-horas">2 Horas Semanales</span>
+                <h3>Energías Renovables</h3>
+                <p>Introducción a las tecnologías limpias: diseño, conexionado y dimensionamiento técnico de sistemas fotovoltaicos (paneles solares) y sistemas eólicos domésticos.</p>
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+             INFRAESTRUCTURA Y CULTURA
+             ========================================== -->
+        <h2 class="titulo-seccion"> Infraestructura Técnica e Identidad</h2>
+        <div class="mosaico-moderno">
+            
+            <div class="mosaico-item">
+                <h3> Talleres de Alta Tensión y Fuerza Total</h3>
+                <p>Nuestra institución cuenta con infraestructura técnica de alto nivel: un taller de electricidad de potencia equipado con módulos de simulación industrial, motores listos para prácticas de bobinado y bancos de automatización avanzada.</p>
+            </div>
+
+            <!-- Imagen 5 -->
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 6.24.16 PM.jpeg" alt="Tablero industrial cableado por alumnos">
+                <div class="overlay-imagen">Entorno Real de Trabajo Industrial</div>
+            </div>
+
+            <div class="mosaico-item">
+                <h3> Maestros Técnicos de Campo</h3>
+                <p>El aprendizaje es guiado por un equipo de docentes de amplia experiencia en el sector eléctrico, encargados de supervisar cada conexión bajo estrictas normas internacionales de seguridad.</p>
+            </div>
+
+            <!-- Imagen 6 -->
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 5.22.51 PM.jpeg" alt="Feria de proyectos tecnológicos eléctricos">
+                <div class="overlay-imagen">Feria Tecnológica: Proyectos con Energía Real</div>
+            </div>
+
+            <div class="mosaico-item ancho" style="background: linear-gradient(to right, #f7fafc, #edf2f7);">
+                <h3> Exposición de Potencia e Innovación Eléctrica</h3>
+                <p>La cultura técnica de Electricidad brilla con luz propia. Anualmente, la carrera organiza su gran feria de proyectos eléctricos, donde los estudiantes exponen ante el sector privado prototipos de domótica (casas inteligentes), sistemas de paneles solares automatizados y brazos industriales electromecánicos creados de forma íntegra en nuestros laboratorios.</p>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- JAVASCRIPT DEL MENÚ -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const btnMenu = document.getElementById('btnMenu');
+            const menuContenido = document.getElementById('menuContenido');
+
+            if (btnMenu && menuContenido) {
+                btnMenu.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const displayActual = window.getComputedStyle(menuContenido).display;
+                    if (displayActual === 'none') {
+                        menuContenido.style.display = 'flex';
+                    } else {
+                        menuContenido.style.display = 'none';
+                    }
+                });
+
+                document.addEventListener('click', function() {
+                    menuContenido.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

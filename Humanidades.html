@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciencias y Humanidades - Instituto José Trinidad Cabañas</title>
+    <link rel="stylesheet" href="Menu.css">
+    <style>
+        /* Contenedor Principal Adaptado a tu Estilo Original */
+        .detalle-carrera-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 25px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+        /* Hero Banner Académico e Intelectual */
+        .header-carrera {
+            background: linear-gradient(135deg, #1a365d 0%, #1a365d 100%); /* Fusión de azul noble y borgoña profundo */
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(26, 54, 93, 0.15);
+            color: white;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .header-carrera h1 {
+            font-size: 3rem;
+            margin: 0 0 10px 0;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .header-carrera p {
+            color: white; /* Tono rosa/vino claro muy sofisticado para contrastar */
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 0;
+        }
+
+        /* Títulos de Bloques */
+        .titulo-seccion {
+            color: #1a365d;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 40px 0 20px 0;
+            padding-left: 15px;
+            border-left: 5px solid #1a365d;
+        }
+
+        /* ==========================================
+           MOSAICO DE CUADROS (GRID)
+           ========================================== */
+        .mosaico-moderno {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 992px) {
+            .mosaico-moderno { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .mosaico-moderno { grid-template-columns: 1fr; }
+        }
+
+        /* Cuadros de asignaturas y datos */
+        .mosaico-item {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+
+        .mosaico-item.ancho { grid-column: span 2; }
+        @media (max-width: 600px) { .mosaico-item.ancho { grid-column: span 1; } }
+
+        /* Cuadros destinados a ser IMÁGENES completas */
+        .mosaico-item.tarjeta-imagen {
+            padding: 0;
+            position: relative;
+            min-height: 260px;
+            background: white;
+        }
+
+        .mosaico-item.tarjeta-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+        }
+
+        .overlay-imagen {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(26, 54, 93, 0.9));
+            padding: 20px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .mosaico-item h3 {
+            color: #2b0570;
+            font-size: 1.35rem;
+            margin: 0 0 12px 0;
+            font-weight: 700;
+        }
+
+        .mosaico-item p {
+            color: #2b0570;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .badge-horas {
+            align-self: flex-start;
+            background: #ebf8ff;
+            color: #2b6cb0;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        /* Estilo de la lista de capacidades */
+        .lista-salsa {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .lista-salsa li {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .lista-salsa li::before {
+            content: "🏛️";
+            color: #1d08a9;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR AZUL INSTITUCIONAL -->
+    <header class="custom-header">
+        <div class="menu-container">
+            <button class="boton-desplegable" id="btnMenu" aria-label="Abrir menú">☰</button>
+            <span class="texto-institucional">MENÚ INSTITUCIONAL</span>
+            
+            <nav class="menu-desplegable" id="menuContenido">
+                  <a href="menuscar.html">Inicio</a>
+                <a href="Quines Somos.html">Quienes Somos</a>
+                <a href="CatalogoCarreras.html">Carreras</a>
+                <a href="Areas.html">Areas</a>
+                <a href="Jornadas.html">Jornadas</a>
+                 <a href="Personal administrativo.html">Personal administrativo</a>
+                   <a href="docentes.html">Docentes</a>
+            </nav>
+        </div>
+
+        <div class="logo-container">
+            <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 7.10.33 PM.jpeg" alt="Logo Instituto" class="logo-grande">
+        </div>
+    </header>
+
+    <!-- CUERPO DE LA CARRERA -->
+    <main class="detalle-carrera-container">
+        
+        <div class="contenedor-volver" style="padding: 0; margin-bottom: 30px;">
+         
+        </div>
+
+        <!-- HERO BANNER -->
+        <div class="header-carrera">
+            <p>Bachillerato en Ciencias y Humanidades</p>
+            <h1>Ciencias y Humanidades</h1>
+        </div>
+
+        <!-- ==========================================
+             BLOQUE DE PASIÓN Y PROPÓSITO INSTITUCIONAL
+             ========================================== -->
+        <h2 class="titulo-seccion"> Formación Crítica, Científica y Propedéutica</h2>
+        <div class="mosaico-moderno">
+            
+            <div class="mosaico-item ancho" style="background: linear-gradient(to right, white, white);">
+                <h3> </h3>
+                <p>En el Instituto José Trinidad Cabañas, el Bachillerato en Ciencias y Humanidades es un plan intensivo enfocado firmemente en mentes analíticas que apuntan a carreras universitarias exigentes (Medicina, Ingenierías, Derecho o Relaciones Internacionales). Al ser una modalidad enfocada puramente en el egreso hacia la universidad, formamos pensadores libres con un riguroso dominio científico-experimental y altas capacidades de razonamiento lógico y comunicativo global.</p>
+            </div>
+
+            <div class="mosaico-item">
+                <h3>Pilares de Excelencia Académica:</h3>
+                <ul class="lista-salsa">
+                    <li>Método científico y experimentación.</li>
+                    <li>Oratoria, lógica y argumentación analítica.</li>
+                    <li>Dominio lingüístico y cultura global.</li>
+                    <li>Preparación directa para pruebas académicas.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+             BLOQUE 1: UNDÉCIMO GRADO (PLAN DE ESTUDIOS EXACTO)
+             ========================================== -->
+        <h2 class="titulo-seccion"> Núcleo Avanzado de Conocimiento — Undécimo Grado (Año de Egreso)</h2>
+        
+        <div class="mosaico-moderno">
+            
+            <!-- Biología (4 Horas) -->
+            <div class="mosaico-item">
+                <span class="badge-horas">4 Horas Semanales</span>
+                <h3>Biología</h3>
+                <p>Estudio de los sistemas vivos, bases de la genética molecular, evolución biológica, microbiología y anatomía humana con enfoque clínico preparatorio para ciencias de la salud.</p>
+            </div>
+
+            <!-- Física Aplicada (4 Horas) -->
+            <div class="mosaico-item">
+                <span class="badge-horas">4 Horas Semanales</span>
+                <h3>Física Aplicada</h3>
+                <p>Análisis de fenómenos cinemáticos, dinámica clásica, vectores, teoremas de la energía y mecánica de fluidos mediante modelado matemático riguroso.</p>
+            </div>
+
+            <!-- Imagen 1 -->
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 7.14.00 PM.jpeg" alt="Estudiantes en laboratorio con microscopios">
+                <div class="overlay-imagen">Investigación Científica</div>
+            </div>
+
+            <!-- Química (3 Horas) -->
+            <div class="mosaico-item">
+                <span class="badge-horas">3 Horas Semanales</span>
+                <h3>Química</h3>
+                <p>Comprensión estructural de la materia. Balanceo estequiométrico, soluciones químicas, enlaces moleculares y laboratorios experimentales aplicados.</p>
+            </div>
+
+            <!-- Matemáticas (3 Horas) -->
+            <div class="mosaico-item">
+                <span class="badge-horas">3 Horas Semanales</span>
+                <h3>Matemáticas</h3>
+                <p>Desarrollo del razonamiento abstracto a través de funciones complejas, trigonometría analítica, álgebra avanzada y pre-cálculo para potenciar las habilidades lógico-matemáticas universitarias.</p>
+            </div>
+
+            <!-- Filosofía (3 Horas) -->
+            <div class="mosaico-item">
+                <span class="badge-horas">3 Horas Semanales</span>
+                <h3>Filosofía</h3>
+                <p>Evolución de las corrientes del pensamiento humano. Desarrollo del juicio crítico, la ética formal, la epistemología de la ciencia y la lógica argumentativa formal.</p>
+            </div>
+
+            <!-- Antropología (3 Horas) -->
+            <div class="mosaico-item">
+                <span class="badge-horas">3 Horas Semanales</span>
+                <h3>Antropología</h3>
+                <p>Análisis evolutivo, biológico y sociocultural del ser humano. Estudio de las expresiones culturales primigenias, diversidad étnica, comportamiento humano e identidad social.</p>
+            </div>
+
+            <!-- Imagen 2 -->
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 7.06.24 PM (2).jpeg" alt="Estudiantes debatiendo en mesa redonda">
+                <div class="overlay-imagen">Pensamiento logico y Participacion </div>
+            </div>
+
+            <!-- Apreciación Artística (3 Horas) -->
+            <div class="mosaico-item">
+                <span class="badge-horas">3 Horas Semanales</span>
+                <h3>Apreciación Artística</h3>
+                <p>Estudio analítico de la estética visual, historia del arte clásico y contemporáneo, y el impacto de las manifestaciones artísticas como fiel reflejo sociocultural.</p>
+            </div>
+
+            <!-- Inglés (3 Horas) -->
+            <div class="mosaico-item">
+                <span class="badge-horas">3 Horas Semanales</span>
+                <h3>Inglés</h3>
+                <p>Consolidación lingüística y de comunicación en un segundo idioma. Comprensión lectora avanzada, fluidez conversacional y redacción técnica estructurada.</p>
+            </div>
+
+            <!-- Español (3 Horas) -->
+            <div class="mosaico-item">
+                <span class="badge-horas">3 Horas Semanales</span>
+                <h3>Español</h3>
+                <p>Análisis de la literatura universal, dominio de la sintaxis y gramática avanzada, junto con talleres intensivos de redacción académica para la elaboración de ensayos científicos.</p>
+            </div>
+
+            <!-- Economía (2 Horas) -->
+            <div class="mosaico-item">
+                <span class="badge-horas">2 Horas Semanales</span>
+                <h3>Economía</h3>
+                <p>Introducción al comportamiento macro y microeconómico, análisis de mercados, flujos monetarios globales y leyes fundamentales de la oferta y la demanda.</p>
+            </div>
+
+            <!-- Historia Universal (2 Horas) -->
+            <!-- HISTORIA UNIVERSAL -->
+            <div class="mosaico-item" style="border-left: 5px solid #1a365d;">
+                <span class="badge-horas">2 Horas Semanales</span>
+                <h3>Historia Universal</h3>
+                <p>Un recorrido estratégico por las coyunturas históricas definitivas de la humanidad para desentrañar los factores estructurales del mundo actual.</p>
+            </div>
+
+            <!-- TRONCO CIENTÍFICO Y CLASES GENERALES -->
+            <div class="mosaico-item" style="border-left: 5px solid #1a365d;">
+                <h3>Tronco Científico y Clases Generales</h3>
+                <div class="contenedor-generales">
+                    <span class="badge-general" style="border-color: #1a365d; background: #f7fafc; color: #1a365d;">🇺🇸 Inglés Técnico (2 Horas)</span>
+                    <span class="badge-general">Español (4 Horas)</span>
+                    <span class="badge-general">Filosofía (3 Horas)</span>
+                    <span class="badge-general">Economía (3 Horas)</span>
+                    <span class="badge-general">Apreciación Artística (1 Hora)</span>
+                    <span class="badge-general">Física Aplicada</span>
+                    <span class="badge-general">Legislación Informática</span>
+                </div>
+            </div>
+
+            <!-- IMAGEN A LA PAR DEL TRONCO CIENTÍFICO -->
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-03 at 2.41.49 PM.jpeg" alt="Creación de Empresas">
+                <div class="overlay-imagen">Actividades de Asilo</div>
+            </div>
+
+        </div> <!-- CIERRE DEL MOSAICO DE UNDÉCIMO GRADO -->
+
+        <!-- ==========================================
+             INFRAESTRUCTURA, ENFOQUE PROPEDÉUTICO Y CULTURA
+             ========================================== -->
+        <h2 class="titulo-seccion"> Identidad Intelectual, Infraestructura y Éxito Universitario</h2>
+        <div class="mosaico-moderno">
+            
+            <div class="mosaico-item">
+                <p align="justify"></p>
+                <h3> Laboratorios de Ciencias Integradas</h3>
+                <p>La experimentación de undécimo grado es constante. Contamos con laboratorios dotados de material volumétrico de vidrio, reactivos químicos y microscopios de precisión para que las leyes de la física, la biología y la química cobren vida real mediante informes de investigación prácticos.</p>
+            </div>
+
+            <!-- Imagen 3 -->
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 7.06.24 PM (1).jpeg" alt="Cultivos bacterianos en laboratorio">
+                <div class="overlay-imagen">Visitas y Observación al Asilo de Ancianos</div>
+            </div>
+
+            <div class="mosaico-item">
+                <h3> Orientación Universitaria y PAA</h3>
+                <p>Al ser el año terminal de la carrera, el plan incluye un riguroso enfoque propedéutico con simulacros de examen y reforzamientos de aptitud verbal y matemática, asegurando puntajes de excelencia en las Pruebas de Aptitud Académica (PAA) de las universidades públicas y privadas.</p>
+            </div>
+
+            <!-- Imagen 4 -->
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 7.06.24 PM.jpeg" alt="Estudiantes en biblioteca universitaria">
+                <div class="overlay-imagen">Preparación Directa Para Pruebas de Aptitud Académica</div>
+            </div>
+
+            <div class="mosaico-item">
+                <h3> Cuerpo de Catedráticos Especialistas</h3>
+                <p>Las clases de este último año son impartidas por profesionales universitarios de las áreas exactas e históricas (Ingenieros, Médicos, Abogados e Historiadores), garantizando un estándar de exigencia de nivel superior.</p>
+            </div>
+
+            <!-- IMAGEN A LA PAR DEL TRONCO CIENTÍFICO -->
+            <div class="mosaico-item tarjeta-imagen">
+                <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-03 at 2.46.41 PM.jpeg" alt="Creación de Empresas">
+                <div class="overlay-imagen">Formando Profesionales</div>
+            </div>
+
+           
+        </div>
+
+    </main>
+
+    <!-- JAVASCRIPT DEL MENÚ -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const btnMenu = document.getElementById('btnMenu');
+            const menuContenido = document.getElementById('menuContenido');
+
+            if (btnMenu && menuContenido) {
+                btnMenu.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const displayActual = window.getComputedStyle(menuContenido).display;
+                    if (displayActual === 'none') {
+                        menuContenido.style.display = 'flex';
+                    } else {
+                        menuContenido.style.display = 'none';
+                    }
+                });
+
+                document.addEventListener('click', function() {
+                    menuContenido.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
