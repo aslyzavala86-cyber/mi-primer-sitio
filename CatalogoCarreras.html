@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta Académica - Instituto José Trinidad Cabañas</title>
+    <link rel="stylesheet" href="Menu.css">
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR AZUL -->
+    <header class="custom-header">
+        <div class="menu-container">
+            <button class="boton-desplegable" id="btnMenu" aria-label="Abrir menú">☰</button>
+            <span class="texto-institucional">MENÚ INSTITUCIONAL</span>
+            
+            <nav class="menu-desplegable" id="menuContenido">
+                 <a href="menuscar.html">Inicio</a>
+                <a href="Quines Somos.html">Quienes Somos</a>
+                <a href="CatalogoCarreras.html">Carreras</a>
+                <a href="Areas.html">Areas</a>
+                <a href="Jornadas.html">Jornadas</a>
+                 <a href="Personal administrativo.html">Personal administrativo</a>
+                   <a href="docentes.html">Docentes</a>
+        </div>
+
+        <div class="logo-container">
+            <img src="c:\Users\valer\Downloads\WhatsApp Image 2026-06-02 at 7.10.33 PM.jpeg" alt="Logo Instituto" class="logo-grande">
+        </div>
+    </header>
+
+    <main class="carreras-section">
+  
+
+        <h2 class="carreras-titulo">Nuestra Oferta Académica</h2>
+        <p class="carreras-subtitulo">Selecciona la carrera de tu interés para ver la información detallada:</p>
+
+        <div class="carreras-container">
+            
+            <!-- Cuadro 1: Informática -->
+            <div class="carrera-card">
+                <div class="carrera-badge">BTPI</div>
+                <h3>Bachillerato Tecnico Profesional En Informática</h3>
+                <p>Prepara a los jóvenes en el dominio de la tecnología, desarrollo de software, diseño web, redes y soporte técnico para el entorno digital actual</p>
+                <div class="carrera-detalles">
+                    <span><strong>Duración:</strong> 3 Años</span>
+                </div>
+                <a href="Informatica.html" class="btn-ver-mas">Ver Mas →</a>
+            </div>
+
+            <!-- Cuadro 2: Contabilidad -->
+            <div class="carrera-card">
+                <div class="carrera-badge">BTPE</div>
+                <h3>Bachillerato Tecnico Profesional En Electricidad</h3>
+                <p>Enseña el diseño, instalación y mantenimiento de sistemas eléctricos residenciales e industriales, capacitando al alumno para el ámbito laboral técnico</p>
+                <div class="carrera-detalles">
+                    <span><strong>Duración:</strong> 3 Años</span>
+                </div>
+                <a href="Electricidad.html" class="btn-ver-mas">Ver Mas →</a>
+            </div>
+
+            <!-- Cuadro 3: Administración -->
+            <div class="carrera-card">
+                <div class="carrera-badge">BTPF</div>
+                <h3>Bachillerato Tecnico Profesional En Contaduria Y Finanzas</h3>
+                <p>Enseña a llevar el control financiero y contable de una empresa, desarrollando competencias clave para la gestión y creación de negocios propios</p>
+                <div class="carrera-detalles">
+                    <span><strong>Duración:</strong> 3 Años</span>
+                </div>
+                <a href="Finanzas.html" class="btn-ver-mas">Ver Mas →</a>
+            </div>
+
+            <!-- Cuadro 4: Humanidades -->
+            <div class="carrera-card">
+                <div class="carrera-badge">BCH</div>
+                <h3>Bachillerato En Ciencias Y Humanidades</h3>
+                <p>Brinda una sólida formación científica y social de alto nivel, preparando de manera óptima al estudiante para su ingreso y éxito en la universidad.</p>
+                <div class="carrera-detalles">
+                    <span><strong>Duración:</strong> 2 Años</span>
+                </div>
+                <a href="Humanidades.html" class="btn-ver-mas">Ver Mas →</a>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        const btnMenu = document.getElementById('btnMenu');
+        const menuContenido = document.getElementById('menuContenido');
+
+        btnMenu.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            menuContenido.classList.toggle('activo');
+        });
+
+        document.addEventListener('click', () => {
+            menuContenido.classList.remove('activo');
+        });
+    </script>
+</body>
+</html>
